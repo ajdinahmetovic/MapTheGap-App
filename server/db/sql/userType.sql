@@ -1,5 +1,5 @@
-CREATE DATABASE userType(
-    id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE userType (
+    id SERIAL,
     name VARCHAR(31) UNIQUE,
 
     PRIMARY KEY (id)

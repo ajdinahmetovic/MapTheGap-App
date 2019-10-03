@@ -1,5 +1,6 @@
 CREATE TABLE ngo (
-    id INT NOT NULL UNIQUE,
+    id SERIAL,
+    userType INT NOT NULL,
     name VARCHAR(31) NOT NULL,
     email VARCHAR(31) NOT NULL UNIQUE,
     phoneNumber VARCHAR(15) NOT NULL UNIQUE,
@@ -8,4 +9,5 @@ CREATE TABLE ngo (
     areaOfAction VARCHAR(31)[] NOT NULL,
 
     PRIMARY KEY (id),
+    FOREIGN KEY (userType) REFERENCES userType(id)
 );
