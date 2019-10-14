@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="940" viewBox="0 0 1920 940">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Web_1920_4);
+      }
+
+      .cls-2 {
+        fill: #f42190;
+        opacity: 0.19;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #707070;
+      }
+
+      .cls-4 {
+        fill: #001988;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        filter: url(#Path_2);
+      }
+    </style>
+    <filter id="Path_2" x="-23.933" y="-180.454" width="2027.313" height="1083.313" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Web_1920_4">
+      <rect width="1920" height="940"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_4" data-name="Web 1920 – 4" class="cls-1">
+    <rect class="cls-5" width="1920" height="940"/>
+    <g id="Group_53" data-name="Group 53">
+      <g id="Group_52" data-name="Group 52">
+        <g id="Group_51" data-name="Group 51" transform="translate(-14.933)">
+          <path id="Path_3" data-name="Path 3" class="cls-2" d="M4,805.5s370.009,326.509,745.718,227.065,489.256-149.167,674.606-77.9,333.963,164.324,509.294,121.232S1940.3,21.546,1940.3,21.546H4Z" transform="translate(-4 -152)"/>
+          <path id="Path_1" data-name="Path 1" class="cls-3" d="M4,339.768" transform="translate(-4 -22)"/>
+          <g class="cls-6" transform="matrix(1, 0, 0, 1, 14.93, 0)">
+            <path id="Path_2-2" data-name="Path 2" class="cls-4" d="M4,805.5s370.009,326.509,745.718,227.065,489.256-149.167,674.606-77.9,333.963,164.324,509.294,121.232S1940.3,21.546,1940.3,21.546H4Z" transform="translate(-18.93 -196)"/>
+          </g>
+          <circle id="Ellipse_1" data-name="Ellipse 1" class="cls-2" cx="124.5" cy="124.5" r="124.5" transform="translate(-59.067 264)"/>
+          <circle id="Ellipse_2" data-name="Ellipse 2" class="cls-2" cx="65" cy="65" r="65" transform="translate(479.933 632)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
