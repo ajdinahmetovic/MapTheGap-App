@@ -6,7 +6,7 @@ CREATE TABLE Citizens (
     phoneNumber VARCHAR(15) NOT NULL UNIQUE,
     dateOfBirth DATE NOT NULL,
     address VARCHAR(63) NOT NULL,
-    passowrd VARCHAR(31) NOT NULL,
+    password VARCHAR(31) NOT NULL,
     verified BOOLEAN NOT NULL, 
 
     PRIMARY KEY (id),

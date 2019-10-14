@@ -40,7 +40,7 @@ router.post('/register', async (req, res, next) => {
                 resData = await registerNGO(req.body)
                 break;
             case 'citizen': case 4:
-
+                resData = await registerCitizen(req.body)
                 break;
             default:
                 throw new Error("Invalid userType")
@@ -224,7 +224,7 @@ registerCitizen = async data => {
     data.password = await bcrypt.hash(data.password, 10);
 
     //Save to database
-    sqlData = await client.query(`INSERT INTO NGOs(userType, name, email, phoneNumber, address, fieldOfAction, areaOfAction, password, verified)
+    sqlData = await client.query(`INSERT INTO Citizens(userType, name, email, phoneNumber, address, dateOfBirth, password, verified)
         VALUES (${data.userType}, '${data.name}', '${data.email}', '${data.phoneNumber}', '${data.address}', '${data.dateOfBirth}', '${data.password}', false)
         RETURNING *
     `)

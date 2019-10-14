@@ -6,7 +6,7 @@ CREATE TABLE Governments (
     service VARCHAR(63) NOT NULL,
     contactPerson VARCHAR(63) NOT NULL,
     phoneNumber VARCHAR(15) NOT NULL,
-    passowrd VARCHAR(63) NOT NULL,
+    password VARCHAR(63) NOT NULL,
     verified BOOLEAN NOT NULL,  
 
     PRIMARY KEY (id),

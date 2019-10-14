@@ -7,7 +7,7 @@ CREATE TABLE NGOs (
     address VARCHAR(63) NOT NULL,
     fieldOfAction VARCHAR(31)[] NOT NULL,
     areaOfAction VARCHAR(31)[] NOT NULL,
-    passowrd VARCHAR(63) NOT NULL, 
+    password VARCHAR(63) NOT NULL, 
     verified BOOLEAN NOT NULL, 
 
     PRIMARY KEY (id),
