@@ -1,4 +1,4 @@
-CREATE TABLE ngo (
+CREATE TABLE NGOs (
     id SERIAL,
     userType INT NOT NULL,
     name VARCHAR(31) NOT NULL,
@@ -7,7 +7,9 @@ CREATE TABLE ngo (
     address VARCHAR(63) NOT NULL,
     fieldOfAction VARCHAR(31)[] NOT NULL,
     areaOfAction VARCHAR(31)[] NOT NULL,
+    passowrd VARCHAR(63) NOT NULL, 
+    verified BOOLEAN NOT NULL, 
 
     PRIMARY KEY (id),
-    FOREIGN KEY (userType) REFERENCES userType(id)
+    FOREIGN KEY (userType) REFERENCES UserTypes(id)
 );

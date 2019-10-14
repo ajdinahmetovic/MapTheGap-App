@@ -1,0 +1,5 @@
+Oblast djelovanja
+    Definise pomocu tagova
+    Tagovi su ponudjeni iz baze
+    Moguce je dodati tag koji ne postoji u bazi
+    Svaki novi neprepozvani tag se dodaje u bazu
