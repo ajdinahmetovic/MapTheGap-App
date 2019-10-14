@@ -1,0 +1,17 @@
+.BlockFooter{
+    background: url('../assets//BlockFooter.svg');
+    background-size: cover;
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+    &__map{
+        display: flex;
+        height: 100%;
+        justify-content: flex-start;
+        width: 50%;
+        &__img{
+            margin-top: 10%;
+            height: 90%;
+        }
+    }
+}

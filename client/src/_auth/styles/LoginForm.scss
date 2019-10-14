@@ -1,0 +1,50 @@
+.LoginForm {
+    width: 70%;
+    background: white;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    &__message{
+        height: 20%;
+        margin-left: 10%;
+        margin-top: 10%;
+        &__txt1{
+            margin: 0;
+            font-family: 'montserrat';
+            font-weight: 700;
+            font-size: 60px;
+            color: #F42191;
+        }
+        &__txt2{
+            margin: 0;
+            font-family: 'montserrat';
+            font-weight: 500;
+            font-size: 40px;
+            color: #001988;
+        }
+    }
+    
+    &__form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 80%;
+        &__register{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &__txt1{
+                color: #9E9E9E;
+                font-family: 'montserrat' 
+            }
+        }
+    
+    }
+   
+}
+
+h3 {
+    margin: 0;
+}

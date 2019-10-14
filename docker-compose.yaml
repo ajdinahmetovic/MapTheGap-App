@@ -1,0 +1,37 @@
+version: '3'
+services: 
+  db:
+      image: postgres
+      environment:
+        POSTGRES_DB: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: nekipassword
+        PGDATA: /tmp
+      volumes:
+        - ./server/db
+      ports:
+        - 5432:5432
+
+  frontend:
+    image: mtg-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+    - ./client
+    ports:
+    - "3000:3000"
+    depends_on:
+    - rest
+
+  api:
+    image: mtg-api
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+          - .:/server
+        ports:
+        - "8000:8000"
+        depends_on:
+        - db
