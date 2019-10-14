@@ -7,11 +7,11 @@ export class BlockTwo extends React.Component {
 
     componentDidMount() {
         lottie.loadAnimation({
-          container: document.getElementById("animation"), // the dom element that will contain the animation
+          container: document.getElementById("animation"),
           renderer: "svg",
           loop: true,
           autoplay: true,
-          path: "/lottie/megaphone.json" // the path to the animation json
+          path: "/lottie/megaphone.json" 
         });
       }
 

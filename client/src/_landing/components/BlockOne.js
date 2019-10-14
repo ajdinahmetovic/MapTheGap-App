@@ -2,6 +2,8 @@ import React from 'react';
 import '../styles/BlockOne.scss'
 import { Button } from '../../common/components/Button';
 import ideaVec from '../assets/idea.svg'
+import { Link } from 'react-router-dom';
+
 
 export class BlockOne extends React.Component {
     render() {
@@ -12,10 +14,12 @@ export class BlockOne extends React.Component {
                         <div>
                         </div>
                     </div>
-                    <Button
-                        text={"Login"} 
-                        type={"Login"}
-                    />
+                    <Link to='/login'>
+                        <Button
+                            text={"Login"} 
+                            type={"Login"}
+                        />
+                    </Link>
                     <div className="BlockOne__nav__brand__distancer">
 
                     </div>
@@ -37,15 +41,10 @@ export class BlockOne extends React.Component {
                             consectetur adipiscing elit. Integer felis mi, 
                             aliquam at aliquet pellentesque.
                         </p>
-                        <Button
-                            text={"Find out more"}
-                            type={"Find"}
-                        />
+                     
                     </div>
                     <div className="BlockOne__heading__animation">
-
-                        <img className="BlockOne__heading__animation__img" src={ideaVec}/>
-
+                        <img alt="img" className="BlockOne__heading__animation__img" src={ideaVec}/>
                     </div>
                 </div>
             </div>
