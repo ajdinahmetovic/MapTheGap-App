@@ -1,0 +1,41 @@
+.RegisterView {
+  display: flex;
+  flex-direction: row;
+  &__anim {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 40%;
+    height: 100vh;
+    background-color: #001988;
+    &__img {
+      height: 60%;
+    }
+  }
+  &__content {
+    width: 55%;
+  }
+  &__heading {
+    margin-left: 5%;
+    margin-top: 5%;
+
+    &__txt1 {
+      margin: 0;
+      font-family: "montserrat";
+      font-weight: 700;
+      font-size: 40px;
+      color: #f42191;
+    }
+    &__txt2 {
+      margin: 0;
+      font-family: "montserrat";
+      font-weight: 500;
+      font-size: 30px;
+      color: #001988;
+    }
+    &__txt3 {
+      color: #001988;
+      font-family: "montserrat";
+    }
+  }
+}
