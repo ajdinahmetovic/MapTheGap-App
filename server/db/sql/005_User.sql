@@ -1,14 +1,20 @@
-CREATE TABLE Companies (
+CREATE TABLE IF NOT EXISTS Users (
     id SERIAL,
     userType INT NOT NULL,
+
     name VARCHAR(31) NOT NULL,
     email VARCHAR(31) NOT NULL UNIQUE,
     phoneNumber VARCHAR(15) NOT NULL UNIQUE,
-    address VARCHAR(63) NOT NULL,
-    fieldOfAction VARCHAR(31)[] NOT NULL,
-    type VARCHAR(63) NOT NULL,
+    address VARCHAR(63),
+    dateOfBirth DATE,
+
     password VARCHAR(63) NOT NULL,
-    verified BOOLEAN NOT NULL, 
+
+    companyType VARCHAR(31),
+    areaOfAction VARCHAR(31)[]
+    fieldOfAction VARCHAR(31)[],
+
+    verified BOOLEAN NOT NULL,
 
     PRIMARY KEY (id),
     FOREIGN KEY (userType) REFERENCES UserTypes(id)

@@ -22,36 +22,81 @@ client.connect().then(val => {
 
 
 //Endpoints
-router.post('/login', (req, res, next) => {
+router.post('/login', async (req, res, next) => {
+    client.query(
+        `SELECT * FROM Users WHERE email='${req.body.email}'`
+    ).then(async result => {
+        if (await bcrypt.compare(req.body.password, result.rows[0].password)) {
+            result.rows[0].password = undefined
+
+            res.status(200).send({
+                success: true,
+                request_id: Math.random().toString(36).substring(10),
     
+                data: {
+                    token: await jwt.sign({id: result.rows[0].id}, process.env.JWT_KEY, {expiresIn: '31 days'}),
+                    user: result.rows[0]
+                }
+            })
+        } else {
+            res.status(400).send({
+                success: false,
+                request_id: Math.random().toString(36).substring(3),
+    
+                data: {},
+                error: "Incorrect email or password."
+            })
+        }
+    }).catch(error => {
+        console.log(error)
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+            error: error.detail
+        })
+    })
 })
 
 router.post('/register', async (req, res, next) => {
-    try {
-        var resData = null
-        switch(req.body.userType) {
-            case 'company': case 1:
-                resData = await registerCompany(req.body)
-                break;
-            case 'government': case 2:
-                resData = await registerGovernment(req.body)
-                break;
-            case 'ngo': case 3:
-                resData = await registerNGO(req.body)
-                break;
-            case 'citizen': case 4:
-                resData = await registerCitizen(req.body)
-                break;
-            default:
-                throw new Error("Invalid userType")
-        }
+    //Validation
+    
 
-        res.status(200).json(resData)
-} catch (err) {
-        console.log(err.message)
-        res.status(400).json({code: 400, message: err.message})
-    }
+    //Passsword hashing
+    req.body.password = await bcrypt.hash(req.body.password, 10);
 
+    client.query(`INSERT INTO Users (userType, name, email, phoneNumber, address, dateOfBirth, password, companyType, verified) VALUES (
+        ${req.body.userType},
+        ${req.body.name ? `'${req.body.name}'` : null},
+        ${req.body.email ? `'${req.body.email}'` : null},
+        ${req.body.phoneNumber ? `'${req.body.phoneNumber}'` : null},
+        ${req.body.address ? `'${req.body.address}'` : null},
+        ${req.body.dateOfBirth ? `'${req.body.dateOfBirth}'` : null},
+        ${req.body.password ? `'${req.body.password}'` : null},
+        ${req.body.companyType ? `'${req.body.companyType}'` : null},
+        FALSE
+    ) RETURNING *`).then(async result => {
+        result.rows[0].password = undefined
+
+        res.status(200).send({
+            success: true,
+            request_id: Math.random().toString(36).substring(10),
+
+            data: {
+                token: await jwt.sign({id: result.rows[0].id}, process.env.JWT_KEY, {expiresIn: '31 days'}),
+                user: result.rows[0]
+            }
+        })
+    }).catch(error => {
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+            error: error.detail
+        })
+    })
 })
 
 

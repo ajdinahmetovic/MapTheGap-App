@@ -1,0 +1,5 @@
+CREATE TABLE  IF NOT EXISTS  Areas (
+    text VARCHAR(31) NOT NULL,
+
+    PRIMARY KEY (text)
+);

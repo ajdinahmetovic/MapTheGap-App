@@ -1,4 +1,4 @@
-CREATE TABLE Fields (
+CREATE TABLE IF NOT EXISTS Fields (
     text VARCHAR(31) NOT NULL,
 
     PRIMARY KEY (text)

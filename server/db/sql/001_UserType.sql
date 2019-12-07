@@ -1,4 +1,4 @@
-CREATE TABLE UserTypes (
+CREATE TABLE IF NOT EXISTS UserTypes (
     id SERIAL,
     name VARCHAR(31) UNIQUE,
 
