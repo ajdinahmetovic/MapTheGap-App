@@ -1,0 +1,33 @@
+.NGO {
+  &__Container {
+    margin-top: 10%;
+    padding: 0 !important;
+    padding-left: 0;
+  }
+  &__Form {
+    &__label {
+      font-family: "montserrat";
+      color: #001988;
+    }
+  }
+  &__checkLabel {
+    margin-left: 25px;
+    margin-bottom: -10px;
+  }
+  &__checkLabel2 {
+    margin-left: 25px;
+  }
+  &__checkbox:checked {
+    background-color: #001988;
+  }
+  &__checkTxt {
+    color: #001988;
+    font-family: "montserrat";
+    font-weight: 400;
+  }
+  &__checkRed {
+    color: #f42191;
+    font-family: "montserrat";
+    font-weight: 700;
+  }
+}

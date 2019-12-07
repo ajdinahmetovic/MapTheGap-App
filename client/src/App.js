@@ -1,17 +1,28 @@
-import React from 'react';
-import './App.css';
-import { Landing } from './views/Landing';
-import { Login } from './views/Login';
+import React from "react";
+import "./App.css";
+import { Landing } from "./views/Landing";
+import { Login } from "./views/Login";
+import { Register } from "./views/Register";
 
-import { Router, Route } from 'react-router-dom';
-import history from './history'
+import { Provider } from "react-redux";
+import store from "./store";
+import I18n from "redux-i18n";
+import { translations } from "./config/translations";
+
+import { Router, Route } from "react-router-dom";
+import history from "./history";
 
 function App() {
   return (
-    <Router history={history}>
-      <Route exact path="/" component={Landing}/>
-      <Route path="/login" component={Login}/>
-    </Router>
+    <Provider store={store}>
+      <I18n translations={translations} initialLang={"en"} fallbackLang="en">
+        <Router history={history}>
+          <Route exact path="/" component={Landing} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Router>
+      </I18n>
+    </Provider>
   );
 }
 

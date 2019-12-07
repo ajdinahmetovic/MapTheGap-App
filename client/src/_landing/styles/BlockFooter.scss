@@ -1,17 +1,70 @@
-.BlockFooter{
-    background: url('../assets//BlockFooter.svg');
-    background-size: cover;
-    height: 60vh;
+.BlockFooter {
+  background: url("../assets//BlockFooter.svg");
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  &__info {
+    width: 60%;
     display: flex;
-    flex-direction: row;
-    &__map{
+    flex-direction: column;
+    &__blank {
+      height: 55%;
+      width: 100%;
+    }
+    &__content {
+      margin-left: 5%;
+      height: 45%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      &__logo {
         display: flex;
         height: 100%;
-        justify-content: flex-start;
-        width: 50%;
-        &__img{
-            margin-top: 10%;
-            height: 90%;
+        align-items: center;
+        width: 25%;
+        &__img {
+          margin-left: 10%;
+          width: 90%;
         }
+      }
+      &__countries {
+        height: 100%;
+        width: 30%;
+      }
+      &__about {
+        height: 100%;
+        width: 30%;
+      }
+      &__social {
+        height: 100%;
+        width: 30%;
+      }
+      &__list {
+        list-style-type: none;
+        color: "#ffffff";
+        &__title {
+          font-family: "montserrat";
+          font-size: 25px;
+          color: white;
+        }
+        &__item {
+          font-family: "montserrat";
+          font-size: 15px;
+          color: white;
+        }
+      }
     }
+  }
+  &__map {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    &__img {
+      margin-top: 10%;
+      height: 60%;
+    }
+  }
 }
