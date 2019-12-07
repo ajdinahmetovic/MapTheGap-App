@@ -11,19 +11,25 @@ import { translations } from "./config/translations";
 
 import { Router, Route } from "react-router-dom";
 import history from "./history";
+import initializeAxios from "./config/axios-config";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <I18n translations={translations} initialLang={"en"} fallbackLang="en">
-        <Router history={history}>
-          <Route exact path="/" component={Landing} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-        </Router>
-      </I18n>
-    </Provider>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    initializeAxios();
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        <I18n translations={translations} initialLang={"en"} fallbackLang="en">
+          <Router history={history}>
+            <Route exact path="/" component={Landing} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </Router>
+        </I18n>
+      </Provider>
+    );
+  }
 }
 
 export default App;

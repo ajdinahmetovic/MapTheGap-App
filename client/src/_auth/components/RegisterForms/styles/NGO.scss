@@ -30,4 +30,17 @@
     font-family: "montserrat";
     font-weight: 700;
   }
+  &__btn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__errMsg {
+    margin-top: 20px;
+    color: red;
+    text-align: center;
+    font-family: "montserrat";
+    font-weight: 700;
+  }
 }

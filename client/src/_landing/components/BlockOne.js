@@ -20,7 +20,9 @@ export class BlockOne extends React.Component {
             <Button text={"Login"} type={"Login"} />
           </Link>
           <div className="BlockOne__nav__brand__distancer"></div>
-          <Button text={"Register"} type={"Register"} />
+          <Link to="/register">
+            <Button text={"Register"} type={"Register"} />
+          </Link>
         </div>
         <div className="BlockOne__heading">
           <div className="BlockOne__heading__content">

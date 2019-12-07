@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/Register.scss";
 import registerImg from "../_auth/assets/register_illus.svg";
 import { PropTypes } from "prop-types";
-import { NGO } from "../_auth/components/RegisterForms/NGO";
+import NGO from "../_auth/components/RegisterForms/NGO";
 
 export class Register extends React.Component {
   render() {

@@ -8,13 +8,19 @@ import {
   Col,
   Label,
   FormGroup,
-  Row
+  Row,
+  Spinner
 } from "reactstrap";
 import { Button } from "../../../common/components/Button";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { registerUser } from "../../../actions/auth_actions";
 import { PropTypes } from "prop-types";
 
-export class NGO extends React.Component {
+class NGO extends React.Component {
+  state = {
+    address: ""
+  };
   render() {
     return (
       <Container className="NGO__Container">
@@ -26,9 +32,9 @@ export class NGO extends React.Component {
                   {this.context.t("APP.REGISTER.NGO_NAME")}
                 </Label>
                 <Input
+                  onChange={e => this.setState({ name: e.target.value })}
                   type="email"
-                  name="email"
-                  placeholder="Enter your Email"
+                  placeholder={this.context.t("APP.REGISTER.NGO_NAME")}
                 />
               </FormGroup>
 
@@ -37,6 +43,9 @@ export class NGO extends React.Component {
                   {this.context.t("APP.WORK_FIELD")}
                 </Label>
                 <Input
+                  onChange={e =>
+                    this.setState({ fieldOfAction: e.target.value })
+                  }
                   placeholder={this.context.t("APP.WORK_FIELD")}
                   type="select"
                 >
@@ -50,13 +59,17 @@ export class NGO extends React.Component {
                 <Label className="NGO__Form__label">
                   {this.context.t("APP.PHONE")}
                 </Label>
-                <Input placeholder={this.context.t("APP.PHONE_PLACE")}></Input>
+                <Input
+                  onChange={e => this.setState({ phoneNumber: e.target.value })}
+                  placeholder={this.context.t("APP.PHONE_PLACE")}
+                ></Input>
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
                   {this.context.t("APP.EMAIL")}
                 </Label>
                 <Input
+                  onChange={e => this.setState({ email: e.target.value })}
                   type="email"
                   name="email"
                   placeholder="Enter your Email"
@@ -73,7 +86,10 @@ export class NGO extends React.Component {
           <Col xs="6">
             <Form className="NGO__Form">
               <FormGroup>
-                <Label className="NGO__Form__label">
+                <Label
+                  onChange={e => this.setState({ country: e.target.value })}
+                  className="NGO__Form__label"
+                >
                   {this.context.t("APP.COUNTRY")}
                 </Label>
                 <Input type="select">
@@ -87,13 +103,25 @@ export class NGO extends React.Component {
                 <Label className="NGO__Form__label">
                   {this.context.t("APP.CITY")}
                 </Label>
-                <Input />
+                <Input
+                  onChange={e =>
+                    this.setState({
+                      city: e.target.value
+                    })
+                  }
+                />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
                   {this.context.t("APP.ADRESS")}
                 </Label>
-                <Input />
+                <Input
+                  onChange={e =>
+                    this.setState({
+                      address: e.target.value
+                    })
+                  }
+                />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
@@ -101,6 +129,11 @@ export class NGO extends React.Component {
                 </Label>
 
                 <Input
+                  onChange={e =>
+                    this.setState({
+                      password: e.target.value
+                    })
+                  }
                   type="password"
                   name="password"
                   placeholder="Enter password"
@@ -129,6 +162,18 @@ export class NGO extends React.Component {
                 </Label>
               </FormGroup>
             </Form>
+            <div className="NGO__btn">
+              {this.props.isLoading ? (
+                <Spinner color="#001988" />
+              ) : (
+                <Button
+                  onClick={() => this.props.registerUser(this.state)}
+                  text={this.context.t("APP.REGISTER")}
+                  type={"Register"}
+                />
+              )}
+              <p className="NGO__errMsg">{this.props.err}</p>
+            </div>
           </Col>
         </Row>
       </Container>
@@ -139,3 +184,12 @@ export class NGO extends React.Component {
 NGO.contextTypes = {
   t: PropTypes.func
 };
+
+const mapStateToProps = state => ({
+  isLoading: state.authReducer.isLoading,
+  err: state.authReducer.NGO_ERR
+});
+const mapDispatchToProps = {
+  registerUser: user => registerUser(user)
+};
+export default connect(mapStateToProps, mapDispatchToProps)(NGO);
