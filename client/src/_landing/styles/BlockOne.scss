@@ -1,62 +1,65 @@
-.BlockOne{
-    background: url('../assets//Block1.svg');
-    background-size: cover;
-    height: 95vh;
+.BlockOne {
+  background: url("../assets//Block1.svg");
+  background-size: cover;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  &__nav {
+    padding-top: 2%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    &__nav{
-        padding-top: 2%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        height: 145px;
-        &__brand{
-            width: 72%;
-            &__distancer{
-                width: 2%;;
-            }
-        }
+    flex-direction: row;
+    height: 145px;
+    &__brand {
+      margin-left: 5%;
+      width: 70%;
+      &__img {
+        width: 20%;
+        height: 20%;
+      }
+      &__distancer {
+        width: 2%;
+      }
     }
-    &__heading{
-        display: flex;
-        flex-direction: row;
-        &__content{
-            margin-left: 5%;
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            &__txt1{
-                font-family: 'montserrat';
-               font-size: 50px;
-               color: white;
-            }
-            &__txt2{
-                font-family: 'montserrat';
-                font-size: 50px;
-                color: #F42191;
-            }
-            &__txt3{
-                font-family: 'montserrat';
-                font-weight: 100;
-                width: 70%;
-                font-size: 20px;
-                color: white;
-            }
-        }
-        &__animation{
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            &__img{
-                width: 80%;
-            }
-        }
-        
+  }
+  &__heading {
+    display: flex;
+    flex-direction: row;
+    &__content {
+      margin-left: 5%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      &__txt1 {
+        font-family: "montserrat";
+        font-size: 50px;
+        color: white;
+      }
+      &__txt2 {
+        font-family: "montserrat";
+        font-size: 50px;
+        color: #f42191;
+      }
+      &__txt3 {
+        font-family: "montserrat";
+        font-weight: 100;
+        width: 70%;
+        font-size: 20px;
+        color: white;
+      }
     }
-
+    &__animation {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &__img {
+        width: 80%;
+      }
+    }
+  }
 }
-p{
-    margin: 0;
-    padding: 0;
+p {
+  margin: 0;
+  padding: 0;
 }
