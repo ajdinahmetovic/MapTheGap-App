@@ -1,0 +1,24 @@
+.Feed {
+  padding-top: 100px;
+  background-color: #efefef;
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+  &__sideNav {
+    display: flex;
+    overflow: hidden;
+    width: 20%;
+    height: 90vh;
+  }
+  &__feed {
+    overflow-y: auto;
+    width: 60%;
+  }
+  &__other {
+    display: flex;
+
+    overflow: hidden;
+    width: 20%;
+    height: 90vh;
+  }
+}

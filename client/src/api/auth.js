@@ -9,4 +9,13 @@ export default class AuthAPI {
       data: user
     });
   };
+
+  static loginUser = user => {
+    console.log(user);
+    return axios({
+      method: "POST",
+      url: `login/`,
+      data: user
+    });
+  };
 }

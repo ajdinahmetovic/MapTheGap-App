@@ -4,8 +4,9 @@ import { setActionSuccess, setActionError, setActionLoading } from "./common";
 
 export const loginUser = user => async dispatch => {
   dispatch(setActionLoading(ACTIONS.LOADING_TRUE));
-
-  return dispatch => {};
+  AuthAPI.loginUser(user)
+    .then(res => {})
+    .catch(err => {});
 };
 
 export const registerUser = user => async dispatch => {
