@@ -5,7 +5,6 @@ const path = require('path')
 const { Client } = require('pg')
 
 module.exports = () => {
-    console.log(database_config)
     migrator.createDb(process.env.POSTGRES_DATABASE, database_config)
         .then(() => {
             require('./client').connect()

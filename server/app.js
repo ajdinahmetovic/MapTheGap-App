@@ -57,10 +57,12 @@ app.use(checkUserAccessToken)
 //Import routes
 const userRoutes = require('./routes/user')
 const issueRoutes =  require('./routes/issue')
+const feedRoutes = require('./routes/feed')
 
 //Routes
 app.use('/user', userRoutes)
 app.use('/issue', issueRoutes)
+app.use('/feed', feedRoutes)
 
 
 //Listen port

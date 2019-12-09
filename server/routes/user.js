@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
                 request_id: Math.random().toString(36).substring(3),
     
                 data: {
-                    token: await jwt.sign({id: result.rows[0].id}, process.env.JWT_KEY, {expiresIn: '31 days'}),
+                    token: await jwt.sign({id: result.rows[0].id}, process.env.JWT_KEY, {expiresIn: process.env.TOKEN_EXPIRATION_TIME}),
                     user: result.rows[0]
                 }
             })
@@ -87,7 +87,7 @@ router.post('/register', async (req, res) => {
             request_id: Math.random().toString(36).substring(10),
 
             data: {
-                token: await jwt.sign({id: sqlData.rows[0].id}, process.env.JWT_KEY, {expiresIn: '31 days'}),
+                token: await jwt.sign({id: sqlData.rows[0].id}, process.env.JWT_KEY, {expiresIn: process.env.TOKEN_EXPIRATION_TIME}),
                 user: sqlData.rows[0]
             }
         })
