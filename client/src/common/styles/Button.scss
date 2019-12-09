@@ -1,59 +1,104 @@
-.Login{
-    width: 160px;
-    height: 45px;
-    border-radius: 45px;
-    outline:none;
-    cursor: pointer;
-    font-family: 'montserrat';
-    font-size: 20px;
-    outline-color: #F42191;
-    border-width: 2px;
-    color: white;
-    border-color: #F42191;
-    background: #001988;
+.Login {
+  width: 160px;
+  height: 45px;
+  border-radius: 45px;
+  outline: none;
+  cursor: pointer;
+  font-family: "montserrat";
+  font-size: 20px;
+  outline-color: #f42191;
+  border-width: 2px;
+  color: white;
+  border-color: #f42191;
+  background: #001988;
 }
-.SignIn{
-    width: 160px;
-    height: 45px;
-    border-radius: 45px;
-    cursor: pointer;
-    outline:none;
-    font-family: 'montserrat';
-    font-size: 20px;
-    outline-color: #0064FF;
-    border-width: 2px;
-    color: white;
-    border-color: #0064FF;
-    background: #0064FF;
-}
-
-.Register{
-    width: 160px;
-    height: 45px;
-    border-radius: 45px;
-    cursor: pointer;
-    outline:none;
-    font-family: 'montserrat';
-    font-size: 20px;
-    outline-color: #F42191;
-    border-width: 2px;
-    color: white;
-    border-color: #F42191;
-    background: #F42191;
+.SignIn {
+  width: 160px;
+  height: 45px;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 20px;
+  outline-color: #0064ff;
+  border-width: 2px;
+  color: white;
+  border-color: #0064ff;
+  background: #0064ff;
 }
 
-.Find{
-    margin-top: 5%;
-    width: 180px;
-    height: 45px;
-    border-radius: 45px;
-    cursor: pointer;
-    outline:none;
-    font-family: 'montserrat';
-    font-size: 20px;
-    outline-color: #16B1FF;
-    border-width: 2px;
-    color: white;
-    border-color: #16B1FF;
-    background: #16B1FF;
+.Register {
+  width: 160px;
+  height: 45px;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 20px;
+  outline-color: #f42191;
+  border-width: 2px;
+  color: white;
+  border-color: #f42191;
+  background: #f42191;
+}
+
+.Find {
+  margin-top: 5%;
+  width: 180px;
+  height: 45px;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 20px;
+  outline-color: #16b1ff;
+  border-width: 2px;
+  color: white;
+  border-color: #16b1ff;
+  background: #16b1ff;
+}
+
+.Support {
+  margin: 10px;
+  width: 35%;
+  height: 80%;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 13px;
+  outline-color: #f42191;
+  border-width: 2px;
+  color: #f42191;
+  border-color: #f42191;
+  background: white;
+}
+
+.PostBtn {
+  margin: 10px;
+  width: 20%;
+  height: 80%;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 13px;
+  border-width: 2px;
+  color: white;
+  border-color: #0064ff;
+  background: #0064ff;
+}
+.DismissBtn {
+  margin: 10px;
+  width: 20%;
+  height: 80%;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 13px;
+  border-width: 2px;
+  color: #f42191;
+  border-color: #f42191;
+  background: white;
 }
