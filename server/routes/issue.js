@@ -125,6 +125,16 @@ router.put('/:id', (req, res, next) => {
     })
 })
 
+router.delete('/:id', (req, res, next) => {/*
+    client.query(
+        `SELECT created_by FROM issue WHERE id=${req.params.id}`
+    ).then(result => {
+        if (result && result.rows[0].created_by == req.userId)
+            next()
+    }, (req, res) => {
+
+    })*/
+})
 
 
 //Export
