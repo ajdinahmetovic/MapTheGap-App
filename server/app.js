@@ -1,14 +1,19 @@
+require('dotenv').config();
+
 const express = require('express')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
-require('dotenv').config();
 const app = express()
 const port = process.env.PORT || 8000
 
 app.use(cors())
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+//Database
+const database_config = require('./config/database_config')
+require('./db/init_db')()
 
 
 //Middleware
@@ -20,13 +25,13 @@ const checkUserAccessToken = (req, res, next) => {
         return
     }
     //Get token from header
-    const token = req.headers.authorization.substring(req.headers.authorization.indexOf(' ') + 1)
+    const token = (req.headers.authorization ? req.headers.authorization.substring(req.headers.authorization.indexOf(' ') + 1) : "")
 
     //Verify token
     jwt.verify(token, process.env.JWT_KEY, (error, decoded) => {
         if (error) {
             //Bad token
-            res.status(403).send({
+            res.status(401).send({
                 success: false,
                 request_id: Math.random().toString(36).substring(3),
 
@@ -51,9 +56,11 @@ app.use(checkUserAccessToken)
 
 //Import routes
 const userRoutes = require('./routes/user')
+const issueRoutes =  require('./routes/issue')
 
 //Routes
 app.use('/user', userRoutes)
+app.use('/issue', issueRoutes)
 
 
 //Listen port

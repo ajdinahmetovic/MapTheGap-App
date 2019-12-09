@@ -27,7 +27,7 @@ BEGIN
 		END LOOP;
 	END IF;
 	
-	if _areas IS NOT NULL THEN
+	IF _areas IS NOT NULL THEN
 		FOREACH i IN ARRAY _areas LOOP
 			INSERT INTO user_area (user_id, area_id) VALUES (user_data.id, i);
 		END LOOP;

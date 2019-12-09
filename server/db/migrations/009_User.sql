@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS users (
 
     created_at timestamp DEFAULT NOW(),
     updated_at timestamp DEFAULT NOW(),
-    verified BOOLEAN NOT NULL DEFAULT FALSE,
+    verified BOOLEAN NOT NULL DEFAULT FALSE
 );
