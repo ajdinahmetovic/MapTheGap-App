@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/NavBar.scss";
+import "../styles/SideBar.scss";
 import navLogo from "../assets/navlogo.svg";
 import notificationsIco from "../assets/notifications.svg";
 
@@ -8,7 +8,11 @@ import { connect } from "react-redux";
 
 class SideBar extends React.Component {
   render() {
-    return <div></div>;
+    return (
+      <div className="SideBar">
+        <img className="SideBar__profileImg" />
+      </div>
+    );
   }
 }
 SideBar.contextTypes = {

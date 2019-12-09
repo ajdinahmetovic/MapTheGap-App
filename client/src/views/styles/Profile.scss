@@ -1,0 +1,8 @@
+.Profile {
+  display: flex;
+  flex-direction: row;
+  &__sideBar {
+    width: 30%;
+    height: 100vh;
+  }
+}
