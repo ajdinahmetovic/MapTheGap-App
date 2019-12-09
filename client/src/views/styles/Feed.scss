@@ -1,5 +1,4 @@
 .Feed {
-  padding-top: 100px;
   background-color: #efefef;
   display: flex;
   overflow: hidden;
@@ -11,12 +10,19 @@
     height: 90vh;
   }
   &__feed {
-    overflow-y: auto;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
     width: 60%;
+    height: 90vh;
+  }
+  &__feed::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+    width: 0 !important;
+    height: 0;
   }
   &__other {
     display: flex;
-
     overflow: hidden;
     width: 20%;
     height: 90vh;

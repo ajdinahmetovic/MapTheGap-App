@@ -1,5 +1,5 @@
+/*
 .NavBar {
-  position: fixed;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -22,6 +22,7 @@
       width: 35px;
     }
     &__avatar {
+      border-radius: 50%;
       cursor: pointer;
       margin-left: 3%;
       width: 45px;
@@ -31,4 +32,43 @@
 
 body {
   background: #efefef;
+}
+*/
+.NavBar {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  &__logoContainer {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    justify-content: flex-start;
+    &__logo {
+      margin-left: 10%;
+      height: 30px;
+    }
+  }
+  &__actionsContainer {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    justify-content: flex-end;
+    &__actions {
+      &__notification {
+        cursor: pointer;
+        width: 30px;
+      }
+      &__avatar {
+        border-radius: 50%;
+        cursor: pointer;
+        margin-left: 3%;
+        width: 40px;
+        margin-right: 15%;
+      }
+    }
+  }
 }

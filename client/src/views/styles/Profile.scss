@@ -1,0 +1,16 @@
+.Profile {
+  display: flex;
+  flex-direction: row;
+  &__sideBar {
+    width: 30%;
+    height: 100vh;
+  }
+  &__nav {
+    position: fixed;
+  }
+  &__content {
+    width: 70%;
+    height: 100vh;
+    background-color: #efefef;
+  }
+}

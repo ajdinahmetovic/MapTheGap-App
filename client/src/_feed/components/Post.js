@@ -3,9 +3,19 @@ import "../styles/Post.scss";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import ngoIco from "../assets/ngo.svg";
+import upVote from "../assets/upwote.svg";
+import vote from "../assets/vote.svg";
+
 import youthIco from "../assets/youth.svg";
+import { Button } from "../../common/components/Button";
 
 class Post extends React.Component {
+  componentWillMount() {
+    this.setState({ voted: this.props.voted });
+  }
+  stat = {
+    voted: this.props.voted
+  };
   //https://music.youtube.com/watch?v=sQKNaVKzjSI&list=RDMMDbBbnHI7JdU
   render() {
     return (
@@ -54,11 +64,22 @@ class Post extends React.Component {
         <div className="Action">
           <div className="Action__line">
             <div className="Action__container">
-              <div className="Action__upvoteContainer">
-                <p>djes</p>
+              <div
+                onClick={() => {
+                  this.setState({ voted: !this.state.voted });
+                }}
+                className="Action__upvoteContainer"
+              >
+                <img
+                  src={this.state.voted ? upVote : vote}
+                  className="Action__upvoteContainer__img"
+                />
+                <p className="Action__upvoteContainer__txt">
+                  {this.context.t("APP.UPWOTE")}
+                </p>
               </div>
               <div className="Action__supportContainer">
-                <p>djes</p>
+                <Button text={this.context.t("APP.SUPPORT")} type={"Support"} />
               </div>
             </div>
           </div>
