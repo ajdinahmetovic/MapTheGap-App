@@ -94,6 +94,7 @@ router.post('/register', async (req, res) => {
 
         
     } catch (error) {
+        console.log(error)
         //Error
         res.status(400).send({
             success: false,
@@ -163,7 +164,7 @@ const validateUser = data => {
     if (data.email.length > 255) throw { detail: "'email' needs to be shorter then 255 characters"}
     if (data.address.length > 255) throw { detail: "'address' needs to be shorter then 255 characters"}
     if (data.password.length > 63 || data.password.length < 8) throw { detail: "'password' needs to be shorter then 63 characters and longer then 7 characters"}
-    if (data.company_type.length > 255) throw { detail: "'company_type' needs to be shorter then 255 characters"}
+    if (data.company_type != undefined && data.company_type.length > 255) throw { detail: "'company_type' needs to be shorter then 255 characters"}
     if (data.areas) data.areaOfAction.forEach((element, index) => {
         if (element.length > 255) throw { detail: `'areas[${index}]' needs to be shorter then 255 characters`}
     });

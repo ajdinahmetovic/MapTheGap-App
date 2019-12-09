@@ -9,6 +9,35 @@ const client = require('../db/client').client
 
 
 //Endpoints
+router.get('/:id', (req, res) => {
+    client.query(`SELECT * FROM issues WHERE id=${req.params.id}`).then(result => {
+        if (result.rows) {
+            res.status(200).send({
+                success: true, 
+                request_id: Math.random().toString(36).substring(3),
+    
+                data: {
+                    issue: result.rows[0]
+                }
+            })
+        } else throw {detail: "Id does not exist"}
+    }).catch(error => {
+        //Error
+        console.log(error)
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+
+            error: {
+                message: error.detail,
+                code: error.code
+            }
+        })
+    })
+})
+
 router.post('/', (req, res) => {
     client.query(`SELECT * FROM create_issue(
         ${req.body.title ? `'${req.body.title}'` : null},
@@ -50,6 +79,13 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res, next) => {
+    client.query(
+        `SELECT created_by FROM issue WHERE id=${req.params.id}`
+    ).then(result => {
+        if (result && result.rows[0].created_by == req.userId)
+            next()
+    })
+}, (req, res) => {
     client.query(`SELECT * FROM update_issue(
         ${req.params.id},
         ${req.body.title ? `'${req.body.title}'` : null},
@@ -88,6 +124,8 @@ router.put('/:id', (req, res, next) => {
         })
     })
 })
+
+
 
 //Export
 module.exports = router
