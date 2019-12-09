@@ -1,8 +1,12 @@
 import React from "react";
 import "../styles/LoginForm.scss";
-import { Input, InputGroup, Form } from "reactstrap";
+import { Input, InputGroup, Form, Spinner } from "reactstrap";
 import { Button } from "../../common/components/Button";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/auth_actions";
+
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 export class LoginForm extends React.Component {
   render() {
@@ -15,11 +19,17 @@ export class LoginForm extends React.Component {
 
         <div className="LoginForm__form">
           <InputGroup>
-            <Input type="email" name="email" placeholder="Enter your Email" />
+            <Input
+              onChange={e => this.setState({ email: e.target.value })}
+              type="email"
+              name="email"
+              placeholder="Enter your Email"
+            />
           </InputGroup>
           <br />
           <InputGroup>
             <Input
+              onChange={e => this.setState({ password: e.target.value })}
               type="password"
               name="password"
               placeholder="Enter password"
@@ -27,7 +37,15 @@ export class LoginForm extends React.Component {
           </InputGroup>
           <br />
           <br />
-          <Button text="Sign In" type="SignIn" />
+          {this.props.isLoading ? (
+            <Spinner color="#001988" />
+          ) : (
+            <Button
+              onClick={() => this.props.loginUser(this.state)}
+              text="Sign In"
+              type="SignIn"
+            />
+          )}
           <br />
           <div className="LoginForm__form__register">
             <p className="LoginForm__form__register__txt1">
@@ -42,3 +60,16 @@ export class LoginForm extends React.Component {
     );
   }
 }
+
+LoginForm.contextTypes = {
+  t: PropTypes.func
+};
+
+const mapStateToProps = state => ({
+  isLoading: state.authReducer.isLoading,
+  err: state.authReducer.NGO_ERR
+});
+const mapDispatchToProps = {
+  loginUser: user => loginUser(user)
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

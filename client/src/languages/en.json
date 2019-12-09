@@ -8,6 +8,7 @@
   "APP.COUNTRY": "Country",
   "APP.CITY": "City",
   "APP.ADRESS": "Address",
+  "APP.REGISTER": "Register",
   "APP.COUNTRIES": "Countries",
   "APP.BOSNIA": "Bosnia and Herzegovina",
   "APP.MACEDONIA": "Rep. North Macedonia",
@@ -28,5 +29,13 @@
   "APP.REGISTER_MSG": "Let's get you all set up so we can verify your nonprofit and begin posting your first problems.",
   "APP.REGISTRATION.I_AGREE": "I agree with",
   "APP.REGISTRATION.TERMS_CONDITIONS": "Terms and Conditions",
-  "APP.REGISTRATION.PRIVACY_POLICY": "Privacy policy"
+  "APP.REGISTRATION.PRIVACY_POLICY": "Privacy policy",
+  "APP.FEED": "Feed",
+  "APP.RECENT": "Recent",
+  "APP.TOP": "Top",
+  "APP.SOLVED": "Solved",
+  "APP.AWARDS": "Awards",
+  "APP.ADVERTISE": "Advertise",
+  "APP.PROBLEM": "Problem",
+  "APP.SOLUTION": "Solution"
 }

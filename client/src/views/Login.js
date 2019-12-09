@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/Login.scss";
 import loginMega from "../_auth/assets/loginMega.svg";
-import { LoginForm } from "../_auth/components/LoginForm";
+import LoginForm from "../_auth/components/LoginForm";
 
 export class Login extends React.Component {
   render() {

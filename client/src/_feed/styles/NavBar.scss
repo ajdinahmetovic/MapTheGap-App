@@ -1,0 +1,34 @@
+.NavBar {
+  position: fixed;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 90px;
+  width: 100vw;
+  background: white;
+  &__logo {
+    margin-left: 5%;
+    height: 30%;
+  }
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 60%;
+    &__notification {
+      cursor: pointer;
+      width: 35px;
+    }
+    &__avatar {
+      cursor: pointer;
+      margin-left: 3%;
+      width: 45px;
+    }
+  }
+}
+
+body {
+  background: #efefef;
+}
