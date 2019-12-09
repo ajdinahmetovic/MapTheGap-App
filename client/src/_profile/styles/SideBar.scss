@@ -7,6 +7,40 @@
   align-items: center;
   justify-content: center;
   &__profileImg {
-    width: 60%;
+    width: 30%;
+    border-radius: 50%;
+  }
+  &__name {
+    margin: 0;
+    margin-top: 10px;
+    color: white;
+    font-family: "montserrat";
+    font-weight: 700;
+    font-size: 25px;
+  }
+  &__role {
+    color: #d1268c;
+    font-family: "montserrat";
+    font-weight: 400;
+    font-size: 20px;
+  }
+  &__line {
+    width: 50%;
+    height: 1px;
+    background-color: #d1268c;
+    border-radius: 10%;
+  }
+  &__item {
+    cursor: pointer;
+    &__txt {
+      margin: 0;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      color: white;
+      font-family: "montserrat";
+      font-weight: 600;
+      font-size: 20px;
+    }
   }
 }

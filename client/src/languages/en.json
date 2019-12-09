@@ -51,5 +51,9 @@
   "APP.PROBLEM_DELEGATE_TO": "Delegate problem to",
   "APP.PROBLEM_PARTICIPATE": "I want to contribute to solving problem",
   "APP.POST": "Post",
-  "APP.CANCEL": "Cancel"
+  "APP.CANCEL": "Cancel",
+  "APP.PROFILE": "Profile",
+  "APP.POSTED_PROBLEMS": "Posted problems",
+  "APP.SOLVED_PROBLEMS": "Solved problems",
+  "APP.DELETE_ACCOUNT": "Delete account"
 }

@@ -13,6 +13,7 @@ import { Router, Route } from "react-router-dom";
 import history from "./history";
 import initializeAxios from "./config/axios-config";
 import { Feed } from "./views/Feed";
+import { Profile } from "./views/Profile";
 
 class App extends React.Component {
   componentDidMount() {
@@ -27,6 +28,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/feed" component={Feed} />
+            <Route path="/profile" component={Profile} />
           </Router>
         </I18n>
       </Provider>

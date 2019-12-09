@@ -1,21 +1,25 @@
 import React from "react";
-import "../styles/Profile.scss";
+import "./styles/Profile.scss";
 import { Input, InputGroup, Form, Spinner } from "reactstrap";
-import { Button } from "../../common/components/Button";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/auth_actions";
 
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import NavBar from "../_feed/components/NavBar";
+import SideBar from "../_profile/components/SideBar";
 
 export class Profile extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <div className="Profile__nav">
+          <NavBar />
+        </div>
         <div className="Profile">
-          <div className="Profile__sideBar"></div>
+          <div className="Profile__sideBar">
+            <SideBar />
+          </div>
+          <div className="Profile__content"></div>
         </div>
       </div>
     );
