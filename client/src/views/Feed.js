@@ -4,8 +4,18 @@ import NavBar from "../_feed/components/NavBar";
 import SideNav from "../_feed/components/SideNav";
 import Post from "../_feed/components/Post";
 import Create from "../_feed/components/Create";
+import history from "../history";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import { getPosts } from "../actions/post_actions";
 
-export class Feed extends React.Component {
+class Feed extends React.Component {
+  componentWillMount() {
+    this.props.getPosts();
+    if (typeof localStorage.getItem("token") !== "string") {
+      history.push("/login");
+    }
+  }
   state = {
     voted: false
   };
@@ -19,32 +29,7 @@ export class Feed extends React.Component {
           </div>
           <div className="Feed__feed">
             <Create />
-            <Post
-              voted={this.state.voted}
-              title={"Mujo izbo hasu"}
-              problem={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus tincidunt, auctor felis nec, eleifend tellus. Morbi tempus dolor eu mauris sodales, ut dignissim felis suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio lectus, facilisis eu condimentum at, pulvinar id velit. Suspendisse tempor est et congue placerat. Aliquam eu justo ac neque ornare posuere. Nunc pretium nulla eget lectus posuere consequat. Nulla aliquam venenatis tortor non vestibulum. Maecenas tincidunt aliquet tempor. Integer porttitor a nibh vel pharetra. Nullam sed dui nisl. "
-              }
-              solution={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus tincidunt, auctor felis nec, eleifend tellus. Morbi tempus dolor eu mauris sodales, ut dignissim felis suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio lectus, facilisis eu condimentum at, pulvinar id velit. Suspendisse tempor est et congue placerat. Aliquam eu justo ac neque ornare posuere. Nunc pretium nulla eget lectus posuere consequat. Nulla aliquam venenatis tortor non vestibulum. Maecenas tincidunt aliquet tempor. Integer porttitor a nibh vel pharetra. Nullam sed dui nisl. "
-              }
-              image={
-                "https://i1.wp.com/dalegi.com/wp-content/uploads/sites/6/2018/04/sarajevo_air_pollution_small.jpg"
-              }
-            />
-
-            <Post
-              title={"Mujo izbo hasu"}
-              problem={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus tincidunt, auctor felis nec, eleifend tellus. Morbi tempus dolor eu mauris sodales, ut dignissim felis suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio lectus, facilisis eu condimentum at, pulvinar id velit. Suspendisse tempor est et congue placerat. Aliquam eu justo ac neque ornare posuere. Nunc pretium nulla eget lectus posuere consequat. Nulla aliquam venenatis tortor non vestibulum. Maecenas tincidunt aliquet tempor. Integer porttitor a nibh vel pharetra. Nullam sed dui nisl. "
-              }
-              solution={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et metus tincidunt, auctor felis nec, eleifend tellus. Morbi tempus dolor eu mauris sodales, ut dignissim felis suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio lectus, facilisis eu condimentum at, pulvinar id velit. Suspendisse tempor est et congue placerat. Aliquam eu justo ac neque ornare posuere. Nunc pretium nulla eget lectus posuere consequat. Nulla aliquam venenatis tortor non vestibulum. Maecenas tincidunt aliquet tempor. Integer porttitor a nibh vel pharetra. Nullam sed dui nisl. "
-              }
-              image={
-                "https://i1.wp.com/dalegi.com/wp-content/uploads/sites/6/2018/04/sarajevo_air_pollution_small.jpg"
-              }
-            />
+            {this.renderPosts()}
           </div>
           <div className="Feed__other">
             <p>djes</p>
@@ -53,4 +38,23 @@ export class Feed extends React.Component {
       </div>
     );
   }
+
+  renderPosts = () => {
+    console.log(this.props.problems);
+    return this.props.problems.map(problem => {
+      return <Post data={problem} key={problem.id} />;
+    });
+  };
 }
+
+Feed.contextTypes = {
+  t: PropTypes.func
+};
+
+const mapStateToProps = state => ({
+  problems: state.postReducer.problems
+});
+const mapDispatchToProps = {
+  getPosts: () => getPosts()
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);

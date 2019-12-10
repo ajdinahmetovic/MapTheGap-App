@@ -4,7 +4,7 @@ export default class ProblemsAPI {
   static getProblems = () => {
     return axios({
       method: "GET",
-      url: `issue/`
+      url: `/feed`
     });
   };
 

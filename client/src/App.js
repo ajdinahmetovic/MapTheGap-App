@@ -12,11 +12,11 @@ import { translations } from "./config/translations";
 import { Router, Route } from "react-router-dom";
 import history from "./history";
 import initializeAxios from "./config/axios-config";
-import { Feed } from "./views/Feed";
+import Feed from "./views/Feed";
 import { Profile } from "./views/Profile";
 
 class App extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     initializeAxios();
   }
   render() {

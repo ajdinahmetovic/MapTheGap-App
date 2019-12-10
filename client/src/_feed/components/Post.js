@@ -43,14 +43,14 @@ class Post extends React.Component {
         </div>
         <div className="Post__descriptionContainer">
           <p className="Post__descriptionContainer__title">
-            {this.props.title}
+            {this.props.data.title}
           </p>
           <p className="Post__descriptionContainer__description">
             <b>
               {this.context.t("APP.PROBLEM")}
               {": "}
             </b>
-            {this.props.problem}
+            {this.props.data.detailed_description}
           </p>
 
           <p className="Post__descriptionContainer__solution">
@@ -58,7 +58,7 @@ class Post extends React.Component {
               {this.context.t("APP.SOLUTION")}
               {": "}
             </b>
-            {this.props.problem}
+            {this.props.data.proposed_solution}
           </p>
         </div>
         <div className="Action">

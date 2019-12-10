@@ -7,8 +7,14 @@ import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import NavBar from "../_feed/components/NavBar";
 import SideBar from "../_profile/components/SideBar";
+import history from "../history";
 
 export class Profile extends React.Component {
+  componentWillMount() {
+    if (typeof localStorage.getItem("token") !== "string") {
+      history.push("/login");
+    }
+  }
   render() {
     return (
       <div>

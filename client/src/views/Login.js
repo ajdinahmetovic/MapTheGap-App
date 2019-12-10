@@ -2,8 +2,14 @@ import React from "react";
 import "./styles/Login.scss";
 import loginMega from "../_auth/assets/loginMega.svg";
 import LoginForm from "../_auth/components/LoginForm";
+import history from "../history";
 
 export class Login extends React.Component {
+  componentWillMount() {
+    if (typeof localStorage.getItem("token") === "string") {
+      history.push("/feed");
+    }
+  }
   render() {
     return (
       <div className="LoginView">

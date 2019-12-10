@@ -3,8 +3,15 @@ import "./styles/Register.scss";
 import registerImg from "../_auth/assets/register_illus.svg";
 import { PropTypes } from "prop-types";
 import NGO from "../_auth/components/RegisterForms/NGO";
+import Youth from "../_auth/components/RegisterForms/Youth";
+import history from "../history";
 
 export class Register extends React.Component {
+  componentWillMount() {
+    if (typeof localStorage.getItem("token") === "string") {
+      history.push("/feed");
+    }
+  }
   render() {
     return (
       <div className="RegisterView">
@@ -20,9 +27,9 @@ export class Register extends React.Component {
               {this.context.t("APP.REGISTER.WELCOME_NETWORK")}
             </h3>
             <p className="RegisterView__heading__txt3">
-              {this.context.t("APP.REGISTER_MSG")}
+              {this.context.t("APP.REGISTER_MSG_YOUTH")}
             </p>
-            <NGO />
+            <Youth />
           </div>
         </div>
       </div>

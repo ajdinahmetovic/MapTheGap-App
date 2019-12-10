@@ -18,10 +18,15 @@ import {
 
 import youthIco from "../assets/youth.svg";
 import { Button } from "../../common/components/Button";
+import { createPost } from "../../actions/post_actions";
 
 class Create extends React.Component {
   state = {
-    isPosting: false
+    isPosting: false,
+    participate: false,
+    location: {
+      coordinates: [0, 0]
+    }
   };
   //https://music.youtube.com/watch?v=sQKNaVKzjSI&list=RDMMDbBbnHI7JdU
   render() {
@@ -71,7 +76,7 @@ class Create extends React.Component {
                 {this.context.t("APP.PROBLEM_TITLE")}
               </Label>
               <Input
-                onChange={e => this.setState({ problem_title: e.target.value })}
+                onChange={e => this.setState({ title: e.target.value })}
                 type="email"
                 placeholder={this.context.t("APP.PROBLEM_TITLE")}
               />
@@ -81,9 +86,11 @@ class Create extends React.Component {
                 {this.context.t("APP.SHORT_DESCRIPTION")}
               </Label>
               <Input
-                onChange={e => this.setState({ problem_title: e.target.value })}
+                onChange={e =>
+                  this.setState({ short_description: e.target.value })
+                }
                 type="textarea"
-                maxlength={10}
+                maxLength={10}
                 cols={20}
                 placeholder={this.context.t("APP.SHORT_DESCRIPTION")}
               />
@@ -93,9 +100,11 @@ class Create extends React.Component {
                 {this.context.t("APP.DETAIL_DESCRIPTION")}
               </Label>
               <Input
-                onChange={e => this.setState({ problem_title: e.target.value })}
+                onChange={e =>
+                  this.setState({ detailed_description: e.target.value })
+                }
                 type="textarea"
-                maxlength={10}
+                maxLength={10}
                 rows={5}
                 placeholder={this.context.t("APP.DETAIL_DESCRIPTION")}
               />
@@ -105,9 +114,11 @@ class Create extends React.Component {
                 {this.context.t("APP.VISION_SOLUTION")}
               </Label>
               <Input
-                onChange={e => this.setState({ problem_title: e.target.value })}
+                onChange={e =>
+                  this.setState({ proposed_solution: e.target.value })
+                }
                 type="textarea"
-                maxlength={10}
+                maxLength={10}
                 rows={5}
                 placeholder={this.context.t("APP.VISION_SOLUTION")}
               />
@@ -117,7 +128,9 @@ class Create extends React.Component {
                 <Col xs="6">
                   <FormGroup>
                     <Label
-                      onChange={e => this.setState({ country: e.target.value })}
+                      onChange={e =>
+                        this.setState({ categories: e.target.value })
+                      }
                       className="NGO__Form__label"
                     >
                       {this.context.t("APP.PROBLEM_FIELD")}
@@ -139,7 +152,9 @@ class Create extends React.Component {
                 <Col>
                   <FormGroup>
                     <Label
-                      onChange={e => this.setState({ country: e.target.value })}
+                      onChange={e =>
+                        this.setState({ delegate_to: e.target.value })
+                      }
                       className="NGO__Form__label"
                     >
                       {this.context.t("APP.PROBLEM_DELEGATE_TO")}
@@ -153,7 +168,16 @@ class Create extends React.Component {
                   </FormGroup>
                   <FormGroup>
                     <Label className="NGO__checkLabel2">
-                      <Input className="NGO__checkbox" type="checkbox" />
+                      <Input
+                        className="NGO__checkbox"
+                        checked={this.state.participate}
+                        onChange={() =>
+                          this.setState({
+                            participate: !this.state.participate
+                          })
+                        }
+                        type="checkbox"
+                      />
                       <p className="NGO__checkTxt">
                         {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
                       </p>
@@ -169,7 +193,15 @@ class Create extends React.Component {
               text={this.context.t("APP.CANCEL")}
               type={"DismissBtn"}
             />
-            <Button text={this.context.t("APP.POST")} type={"PostBtn"} />
+            {this.props.isLoading ? (
+              <Spinner color="#001988" />
+            ) : (
+              <Button
+                onClick={() => this.props.createPost(this.state)}
+                text={this.context.t("APP.POST")}
+                type={"PostBtn"}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -181,8 +213,10 @@ Create.contextTypes = {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.authReducer.isLoading,
-  err: state.authReducer.NGO_ERR
+  isLoading: state.postReducer.isPostLoading,
+  err: state.authReducer.errMsgPosting
 });
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  createPost: post => createPost(post)
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

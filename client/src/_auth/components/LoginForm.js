@@ -46,7 +46,7 @@ export class LoginForm extends React.Component {
               type="SignIn"
             />
           )}
-          <br />
+          <p className="NGO__errMsg">{this.props.err}</p>
           <div className="LoginForm__form__register">
             <p className="LoginForm__form__register__txt1">
               You don't have account?
@@ -66,8 +66,8 @@ LoginForm.contextTypes = {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.authReducer.isLoading,
-  err: state.authReducer.NGO_ERR
+  isLoading: state.authReducer.loginLoading,
+  err: state.authReducer.loginErr
 });
 const mapDispatchToProps = {
   loginUser: user => loginUser(user)
