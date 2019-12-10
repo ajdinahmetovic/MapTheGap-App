@@ -125,15 +125,40 @@ router.put('/:id', (req, res, next) => {
     })
 })
 
-router.delete('/:id', (req, res, next) => {/*
+router.delete('/:id', (req, res, next) => {
+    
+    console.log(req.params.id)
     client.query(
-        `SELECT created_by FROM issue WHERE id=${req.params.id}`
+        `SELECT created_by FROM issues WHERE id=${req.params.id}`
     ).then(result => {
         if (result && result.rows[0].created_by == req.userId)
             next()
-    }, (req, res) => {
+    })
+}, (req, res) => {
+    console.log((`delete_issue(${req.params.id})`))
+    client.query(`SELECT delete_issue(${req.params.id})`).then(result => {
+        res.status(200).send({
+            success: true, 
+            request_id: Math.random().toString(36).substring(3),
 
-    })*/
+            data: {}
+        })
+    }).catch(error => {
+        console.log(error)
+
+        //Error
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+
+            error: {
+                message: error.detail,
+                code: error.code
+            }
+        })
+    })
 })
 
 
