@@ -11,6 +11,13 @@ app.use(cors())
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+//
+process.on('exit', code => {
+    console.log('API is shutting down')
+
+    require('./db/client').disconnect()
+})
+
 //Database
 const database_config = require('./config/database_config')
 require('./db/init_db')()
