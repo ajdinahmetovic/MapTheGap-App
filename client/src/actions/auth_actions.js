@@ -20,7 +20,6 @@ export const loginUser = user => async dispatch => {
     })
     .catch(err => {
       console.log(err.response.data);
-      let errMsg;
       if (err.response.data) {
         //Map messagess to i18n
         /*

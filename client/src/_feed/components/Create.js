@@ -19,9 +19,11 @@ import {
 import youthIco from "../assets/youth.svg";
 import { Button } from "../../common/components/Button";
 import { createPost } from "../../actions/post_actions";
+import ImageUploader from "../../common/components/ImageUploader";
 
 class Create extends React.Component {
   state = {
+    images: [],
     isPosting: false,
     participate: false,
     location: {
@@ -29,6 +31,10 @@ class Create extends React.Component {
     }
   };
   //https://music.youtube.com/watch?v=sQKNaVKzjSI&list=RDMMDbBbnHI7JdU
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    this.setState({ images: nextProps.images });
+  }
   render() {
     if (this.state.isPosting) {
       return this.rederForm();
@@ -45,6 +51,7 @@ class Create extends React.Component {
       >
         <div className="Create__container">
           <img
+            alt="User avatar"
             className="Create__container__img"
             src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
           />
@@ -62,6 +69,7 @@ class Create extends React.Component {
       <div className="Create">
         <div className="Create__container">
           <img
+            alt="User avatar"
             className="Create__container__img"
             src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
           />
@@ -146,7 +154,7 @@ class Create extends React.Component {
                     <Label className="NGO__Form__label">
                       {this.context.t("APP.PROBLEM_PICTURE")}
                     </Label>
-                    <Input type="file" name="file" id="exampleFile" />
+                    <ImageUploader />
                   </FormGroup>
                 </Col>
                 <Col>
@@ -159,12 +167,53 @@ class Create extends React.Component {
                     >
                       {this.context.t("APP.PROBLEM_DELEGATE_TO")}
                     </Label>
-                    <Input type="select">
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </Input>
+                    <Label className="NGO__checkLabel2">
+                      <Input
+                        className="NGO__checkbox"
+                        checked={this.state.participate}
+                        onChange={() =>
+                          this.setState({
+                            participate: !this.state.participate
+                          })
+                        }
+                        type="checkbox"
+                      />
+                      <p className="NGO__checkTxt">
+                        {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                      </p>
+                    </Label>
+
+                    <Label className="NGO__checkLabel2">
+                      <Input
+                        className="NGO__checkbox"
+                        checked={this.state.participate}
+                        onChange={() =>
+                          this.setState({
+                            participate: !this.state.participate
+                          })
+                        }
+                        type="checkbox"
+                      />
+                      <p className="NGO__checkTxt">
+                        {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                      </p>
+                    </Label>
+
+                    <Label className="NGO__checkLabel2">
+                      <Input
+                        className="NGO__checkbox"
+                        checked={this.state.participate}
+                        onChange={() =>
+                          this.setState({
+                            participate: !this.state.participate
+                          })
+                        }
+                        type="checkbox"
+                      />
+                      <p className="NGO__checkTxt">
+                        {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                      </p>
+                    </Label>
                   </FormGroup>
                   <FormGroup>
                     <Label className="NGO__checkLabel2">
@@ -213,6 +262,7 @@ Create.contextTypes = {
 };
 
 const mapStateToProps = state => ({
+  images: state.imageUploadReducer.images,
   isLoading: state.postReducer.isPostLoading,
   err: state.authReducer.errMsgPosting
 });

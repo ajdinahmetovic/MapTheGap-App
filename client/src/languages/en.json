@@ -1,5 +1,7 @@
 {
   "APP.TITLE": "Map The Gap",
+  "APP.NGO": "NGO",
+  "APP.COMPANY": "Company",
   "APP.EMAIL": "Email",
   "APP.PASSWORD": "Password",
   "APP.WORK_FIELD": "Field of work",
@@ -60,5 +62,6 @@
   "APP.PROFILE": "Profile",
   "APP.POSTED_PROBLEMS": "Posted problems",
   "APP.SOLVED_PROBLEMS": "Solved problems",
-  "APP.DELETE_ACCOUNT": "Delete account"
+  "APP.DELETE_ACCOUNT": "Delete account",
+  "APP.SELECT_PHOTOS": "Click here to add photos"
 }

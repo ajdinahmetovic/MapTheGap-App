@@ -16,9 +16,7 @@ class Feed extends React.Component {
       history.push("/login");
     }
   }
-  state = {
-    voted: false
-  };
+
   render() {
     return (
       <div>

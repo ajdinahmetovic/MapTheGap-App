@@ -16,7 +16,7 @@ export class Register extends React.Component {
     return (
       <div className="RegisterView">
         <div className="RegisterView__anim">
-          <img className="RegisterView__anim__img" src={registerImg} />
+          <img alt="" className="RegisterView__anim__img" src={registerImg} />
         </div>
         <div className="RegisterView__content">
           <div className="RegisterView__heading">

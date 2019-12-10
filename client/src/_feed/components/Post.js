@@ -23,6 +23,7 @@ class Post extends React.Component {
         <div className="Header">
           <div className="Header__profileContainer">
             <img
+              alt="Avatar"
               className="Header__profileContainer__img"
               src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
             />
@@ -39,7 +40,11 @@ class Post extends React.Component {
         </div>
 
         <div className="Post__imgContainer">
-          <img className="Post__imgContainer__img" src={this.props.image} />
+          <img
+            alt="Avatar"
+            className="Post__imgContainer__img"
+            src={this.props.image}
+          />
         </div>
         <div className="Post__descriptionContainer">
           <p className="Post__descriptionContainer__title">
@@ -71,6 +76,7 @@ class Post extends React.Component {
                 className="Action__upvoteContainer"
               >
                 <img
+                  alt="Upwote"
                   src={this.state.voted ? upVote : vote}
                   className="Action__upvoteContainer__img"
                 />
@@ -89,7 +95,9 @@ class Post extends React.Component {
   }
 
   renderSupport = () => {
-    return <img className="Header__supportContainer__img" src={ngoIco} />;
+    return (
+      <img alt="Ngo" className="Header__supportContainer__img" src={ngoIco} />
+    );
   };
 }
 Post.contextTypes = {

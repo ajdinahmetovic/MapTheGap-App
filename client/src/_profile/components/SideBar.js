@@ -9,6 +9,7 @@ class SideBar extends React.Component {
     return (
       <div className="SideBar">
         <img
+          alt="Avatar"
           className="SideBar__profileImg"
           src="https://api.adorable.io/avatars/285/ajdin.png"
         />
