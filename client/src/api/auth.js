@@ -5,7 +5,7 @@ export default class AuthAPI {
     console.log(user);
     return axios({
       method: "POST",
-      url: `user/`,
+      url: `/user/register`,
       data: user
     });
   };
@@ -14,7 +14,7 @@ export default class AuthAPI {
     console.log(user);
     return axios({
       method: "POST",
-      url: `login/`,
+      url: `/user/login`,
       data: user
     });
   };

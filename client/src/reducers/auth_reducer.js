@@ -1,8 +1,12 @@
 import { ACTIONS } from "../constants/action_types";
 
 const initialState = {
+  user: null,
   isLoading: false,
-  NGO_ERR: null
+  NGO_ERR: null,
+  //login
+  loginErr: null,
+  loginLoading: false
 };
 
 export default function(state = initialState, action) {
@@ -26,6 +30,26 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false
+      };
+    case ACTIONS.LOGIN_FAIL:
+      return {
+        ...state,
+        loginErr: action.payload
+      };
+    case ACTIONS.LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: action.payload
+      };
+    case ACTIONS.LOGIN_LOADING_TRUE:
+      return {
+        ...state,
+        loginLoading: true
+      };
+    case ACTIONS.LOGIN_LOADING_FALSE:
+      return {
+        ...state,
+        loginLoading: false
       };
 
     default:
