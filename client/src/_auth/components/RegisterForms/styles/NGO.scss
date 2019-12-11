@@ -6,6 +6,7 @@
   }
   &__Form {
     &__label {
+      font-weight: 400;
       font-family: "montserrat";
       color: #001988;
     }
@@ -17,7 +18,7 @@
   &__checkLabel2 {
     margin-left: 25px;
   }
-  &__checkbox:checked {
+  &__checkbox {
     background-color: #001988;
   }
   &__checkTxt {

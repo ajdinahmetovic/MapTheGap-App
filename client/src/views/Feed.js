@@ -8,6 +8,7 @@ import history from "../history";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { getPosts } from "../actions/post_actions";
+import { BrowserView, MobileView } from "react-device-detect";
 
 class Feed extends React.Component {
   componentWillMount() {
@@ -19,6 +20,33 @@ class Feed extends React.Component {
 
   render() {
     return (
+      <div>
+        <BrowserView>
+          <NavBar />
+          <div className="Feed">
+            <div className="Feed__sideNav">
+              <SideNav />
+            </div>
+            <div className="Feed__feed">
+              <Create />
+              {this.renderPosts()}
+            </div>
+            <div className="Feed__other">
+              <p>djes</p>
+            </div>
+          </div>
+        </BrowserView>
+        <MobileView>
+          <NavBar />
+          <div className="Feed_mobile">
+            <div className="Feed_mobile__feed">
+              <Create />
+              {this.renderPosts()}
+            </div>
+          </div>
+        </MobileView>
+      </div>
+      /*
       <div>
         <NavBar />
         <div className="Feed">
@@ -34,11 +62,11 @@ class Feed extends React.Component {
           </div>
         </div>
       </div>
+      */
     );
   }
 
   renderPosts = () => {
-    console.log(this.props.problems);
     return this.props.problems.map(problem => {
       return <Post data={problem} key={problem.id} />;
     });
