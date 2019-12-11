@@ -62,6 +62,7 @@ class Youth extends React.Component {
                   {this.context.t("APP.PHONE")}
                 </Label>
                 <Input
+                  type="tel"
                   onChange={e =>
                     this.setState({ phone_number: e.target.value })
                   }

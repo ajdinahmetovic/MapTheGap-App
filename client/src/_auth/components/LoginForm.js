@@ -1,6 +1,16 @@
 import React from "react";
 import "../styles/LoginForm.scss";
-import { Input, InputGroup, Form, Spinner } from "reactstrap";
+import {
+  Input,
+  InputGroup,
+  Form,
+  Spinner,
+  FormGroup,
+  Label,
+  Container,
+  Col,
+  Row
+} from "reactstrap";
 import { Button } from "../../common/components/Button";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/auth_actions";
@@ -11,52 +21,58 @@ import { PropTypes } from "prop-types";
 export class LoginForm extends React.Component {
   render() {
     return (
-      <Form className="LoginForm">
-        <div className="LoginForm__message">
-          <p className="LoginForm__message__txt1">Hello</p>
-          <h3 className="LoginForm__message__txt2">Welcome back</h3>
-        </div>
+      <Container>
+        <Row>
+          <Col>
+            <Form>
+              <FormGroup>
+                <Label className="NGO__Form__label">
+                  {this.context.t("APP.EMAIL")}
+                </Label>
+                <Input
+                  onChange={e => this.setState({ email: e.target.value })}
+                  type="email"
+                  name="email"
+                  placeholder="Enter your Email"
+                />
+              </FormGroup>
 
-        <div className="LoginForm__form">
-          <InputGroup>
-            <Input
-              onChange={e => this.setState({ email: e.target.value })}
-              type="email"
-              name="email"
-              placeholder="Enter your Email"
-            />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <Input
-              onChange={e => this.setState({ password: e.target.value })}
-              type="password"
-              name="password"
-              placeholder="Enter password"
-            />
-          </InputGroup>
-          <br />
-          <br />
-          {this.props.isLoading ? (
-            <Spinner color="#001988" />
-          ) : (
-            <Button
-              onClick={() => this.props.loginUser(this.state)}
-              text="Sign In"
-              type="SignIn"
-            />
-          )}
-          <p className="NGO__errMsg">{this.props.err}</p>
-          <div className="LoginForm__form__register">
-            <p className="LoginForm__form__register__txt1">
-              You don't have account?
-            </p>
-            <Link to="/register">
-              <p className="LoginForm__form__register__txt2">Register</p>
-            </Link>
-          </div>
-        </div>
-      </Form>
+              <FormGroup>
+                <Label className="NGO__Form__label">
+                  {this.context.t("APP.PASSWORD")}
+                </Label>
+                <Input
+                  onChange={e => this.setState({ password: e.target.value })}
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                />
+              </FormGroup>
+
+              <div className="LoginForm__actionBlock">
+                {this.props.isLoading ? (
+                  <Spinner color="#001988" />
+                ) : (
+                  <Button
+                    onClick={() => this.props.loginUser(this.state)}
+                    text="Sign In"
+                    type="SignIn"
+                  />
+                )}
+                <p className="NGO__errMsg">{this.props.err}</p>
+                <div className="LoginForm__form__register">
+                  <p className="LoginForm__form__register__txt1">
+                    You don't have account?
+                  </p>
+                  <Link to="/register">
+                    <p className="LoginForm__form__register__txt2">Register</p>
+                  </Link>
+                </div>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

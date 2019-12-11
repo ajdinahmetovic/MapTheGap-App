@@ -11,15 +11,21 @@ class NavBar extends React.Component {
     return (
       <div className="NavBar">
         <div className="NavBar__logoContainer">
-          <img src={navLogo} className="NavBar__logoContainer__logo" />
+          <img
+            alt="Logo"
+            src={navLogo}
+            className="NavBar__logoContainer__logo"
+          />
         </div>
         <div className="NavBar__actionsContainer">
           <img
+            alt=""
             //onClick={() => console.log("djes")}
             src={notificationsIco}
             className="NavBar__actionsContainer__actions__notification"
           />
           <img
+            alt="User avatar"
             className="NavBar__actionsContainer__actions__avatar"
             src={
               "https://api.adorable.io/avatars/400/c792eeb6cb3eff2b58b5e16c5de7344e.png"
@@ -28,28 +34,6 @@ class NavBar extends React.Component {
         </div>
       </div>
     );
-    /*
-    return (
-      <body>
-        <div className="NavBar">
-          <img src={navLogo} className="NavBar__logo" />
-          <div className="NavBar__actions">
-            <img
-              //onClick={() => console.log("djes")}
-              src={notificationsIco}
-              className="NavBar__actions__notification"
-            />
-            <img
-              className="NavBar__actions__avatar"
-              src={
-                "https://api.adorable.io/avatars/400/c792eeb6cb3eff2b58b5e16c5de7344e.png"
-              }
-            />
-          </div>
-        </div>
-      </body>
-    );
-    */
   }
 }
 NavBar.contextTypes = {

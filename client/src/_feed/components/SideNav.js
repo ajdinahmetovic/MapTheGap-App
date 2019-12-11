@@ -17,7 +17,7 @@ class SideNav extends React.Component {
       <div className="SideNav">
         <div className="SideNav__item1">
           <div>
-            <img className="SideNav__item1__img" src={home} />
+            <img alt="Home icon" className="SideNav__item1__img" src={home} />
           </div>
           <div>
             <p
@@ -63,7 +63,7 @@ class SideNav extends React.Component {
 
         <div className="SideNav__item1">
           <div>
-            <img className="SideNav__item1__img" src={award} />
+            <img alt="Award ico" className="SideNav__item1__img" src={award} />
           </div>
           <div>
             <p
@@ -77,7 +77,11 @@ class SideNav extends React.Component {
 
         <div className="SideNav__item1">
           <div>
-            <img className="SideNav__item1__img" src={advertise} />
+            <img
+              alt="Advertise ico"
+              className="SideNav__item1__img"
+              src={advertise}
+            />
           </div>
           <div>
             <p

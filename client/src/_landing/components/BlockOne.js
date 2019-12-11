@@ -13,7 +13,11 @@ export class BlockOne extends React.Component {
         <div className="BlockOne__nav">
           <div className="BlockOne__nav__brand">
             <div>
-              <img className="BlockOne__nav__brand__img" src={logo} />
+              <img
+                alt="Logo"
+                className="BlockOne__nav__brand__img"
+                src={logo}
+              />
             </div>
           </div>
           <Link to="/login">
