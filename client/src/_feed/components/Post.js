@@ -10,6 +10,7 @@ import vote from "../assets/vote.svg";
 import youthIco from "../assets/youth.svg";
 import { Button } from "../../common/components/Button";
 import { isBrowser, isMobile } from "react-device-detect";
+import SmartGallery from "react-smart-gallery";
 
 class Post extends React.Component {
   componentWillMount() {

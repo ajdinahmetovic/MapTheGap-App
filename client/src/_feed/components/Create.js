@@ -157,7 +157,7 @@ class Create extends React.Component {
               </FormGroup>
               <Container>
                 <Row>
-                  <Col xs="6">
+                  <Col xs="6" style={{ padding: 0 }}>
                     <FormGroup>
                       <Label
                         onChange={e =>
