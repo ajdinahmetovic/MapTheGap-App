@@ -37,7 +37,7 @@ BEGIN
         u.id AS creator_id,
         u.name AS creator_name,
         u.avatar AS creator_avatar,
-        u.created_at AS created_at
+        i.created_at AS created_at
     FROM 
         issues i, users u
     WHERE 
