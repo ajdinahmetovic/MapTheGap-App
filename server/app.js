@@ -81,14 +81,18 @@ const user_routes = require("./routes/user");
 const issue_routes = require("./routes/issue");
 const feed_routes = require("./routes/feed");
 const user_type_routes = require("./routes/user_type");
-const image_upload = require("./routes/upload-image");
+const image_upload_routes = require("./routes/upload-image");
+const category_routes = require("./routes/category");
+const area_routes = require("./routes/area");
 
 //Routes
 app.use("/user", user_routes);
 app.use("/issue", issue_routes);
 app.use("/feed", feed_routes);
 app.use("/user_type", user_type_routes);
-app.use("/image-upload", image_upload);
+app.use("/image-upload", image_upload_routes);
+app.use("/category", category_routes);
+app.use("/area", area_routes);
 
 //Listen port
 app.listen(port, () => {

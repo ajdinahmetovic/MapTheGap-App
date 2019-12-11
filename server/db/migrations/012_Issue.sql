@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS issues (
     detailed_description TEXT NOT NULL,
     proposed_solution TEXT,
     images TEXT[],
-    up_votes INT DEFAULT 0,
     solved BOOLEAN DEFAULT FALSE,
     longitude NUMERIC,
     latitude NUMERIC,

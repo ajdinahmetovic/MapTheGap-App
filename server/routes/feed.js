@@ -9,31 +9,44 @@ const client = require('../db/client').client
 
 //Endpoints
 router.get('/', (req, res) => {
-    sql_command =  `SELECT * FROM issues`;
+    sql_command =  `SELECT id FROM issues i`;
 
     if (req.query.user_id) {
         sql_command += ' WHERE ';
     }
 
     if (req.query.user_id) {
-        sql_command += ` created_by=${req.query.user_id} `;
+        sql_command += ` i.created_by=${req.query.user_id} `;
     }
+
+    sql_command = `SELECT * FROM (${sql_command}) a, detailed_issue(a.id, ${req.userId}) b `;
 
     if (req.query.sort_by) {
         const sort_var = req.query.sort_by.substring(0, req.query.sort_by.indexOf(':'))
         const sort_dir = req.query.sort_by.substring(req.query.sort_by.indexOf(':') + 1)
         switch (sort_var) {
             case 'date':
-                sql_command += ` ORDER BY created_at ${sort_dir}`
+                sql_command += ` ORDER BY b.created_at ${sort_dir}`
                 break;
+            case 'supported':
+                sql_command += ` ORDER BY b.supported ${sort_dir}`
+                break;
+            case 'upvotes':
+                sql_command += ` ORDER BY b.upvotes ${sort_dir}`
         }
     }
 
     sql_command += ' LIMIT 10'
 
+    
+
     if (req.query.page) {
         sql_command += ` OFFSET ${(req.query.page - 1) * 10} ROWS`
     }
+
+    
+
+    console.log(sql_command)
 
     client.query(sql_command).then(result => {
         if (result.rows) {

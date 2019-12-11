@@ -6,10 +6,9 @@ const router = express.Router()
 const client = require('../db/client').client
 
 
-
 //Endpoints
 router.get('/:id', (req, res) => {
-    client.query(`SELECT * FROM issues WHERE id=${req.params.id}`).then(result => {
+    client.query(`SELECT * FROM detailed_issue(${req.params.id}, ${req.userId}) d`).then(result => {
         if (result.rows) {
             res.status(200).send({
                 success: true, 
@@ -81,8 +80,15 @@ router.put('/:id', (req, res, next) => {
     client.query(
         `SELECT created_by FROM issue WHERE id=${req.params.id}`
     ).then(result => {
-        if (result && result.rows[0].created_by == req.userId)
-            next()
+        if (result.rows[0]) {
+            if (result.rows[0].created_by == req.userId) {
+                next()
+            } else {
+                throw {detail: "Access denied"}
+            }
+        } else {
+            throw {detail: "Issue doesn't exist"}
+        }
     })
 }, (req, res) => {
     client.query(`SELECT * FROM update_issue(
@@ -125,17 +131,60 @@ router.put('/:id', (req, res, next) => {
 })
 
 router.delete('/:id', (req, res, next) => {
-    
-    console.log(req.params.id)
     client.query(
         `SELECT created_by FROM issues WHERE id=${req.params.id}`
     ).then(result => {
-        if (result && result.rows[0].created_by == req.userId)
-            next()
+        if (result.rows[0]) {
+            if (result.rows[0].created_by == req.userId) {
+                next()
+            } else {
+                throw {detail: "Access denied"}
+            }
+        } else {
+            throw {detail: "Issue doesn't exist"}
+        }
+    }).catch(error => {
+        console.log(error)
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+
+            error: {
+                message: error.detail,
+                code: error.code
+            }
+        })
     })
 }, (req, res) => {
-    console.log((`delete_issue(${req.params.id})`))
-    client.query(`SELECT delete_issue(${req.params.id})`).then(result => {
+    client.query(`SELECT delete_issue(${req.params.id})`)
+        .then(result => {
+            res.status(200).send({
+                success: true, 
+                request_id: Math.random().toString(36).substring(3),
+
+                data: {}
+            })
+        }).catch(error => {
+            //Error
+            res.status(400).send({
+                success: false,
+                request_id: Math.random().toString(36).substring(3),
+
+                data: {},
+
+                error: {
+                    message: error.detail,
+                    code: error.code
+                }
+            })
+        })
+})
+
+router.post('/:id/upvote', (req, res) => {
+    client.query(`SELECT vote(${req.userId}, ${req.params.id}, TRUE)`)
+    .then(result => {
         res.status(200).send({
             success: true, 
             request_id: Math.random().toString(36).substring(3),
@@ -144,7 +193,6 @@ router.delete('/:id', (req, res, next) => {
         })
     }).catch(error => {
         console.log(error)
-
         //Error
         res.status(400).send({
             success: false,
@@ -160,6 +208,82 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
+router.delete('/:id/upvote', (req, res) => {
+    client.query(`SELECT vote(${req.userId}, ${req.params.id}, FALSE)`)
+    .then(result => {
+        res.status(200).send({
+            success: true, 
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {}
+        })
+    }).catch(error => {
+        //Error
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+
+            error: {
+                message: error.detail,
+                code: error.code
+            }
+        })
+    })
+})
+
+router.post('/:id/support', (req, res) => {
+    console.log("djes")
+    client.query(`SELECT support_issue(${req.userId}, ${req.params.id}, TRUE)`)
+    .then(result => {
+        res.status(200).send({
+            success: true, 
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {}
+        })
+    }).catch(error => {
+        console.log(error)
+        //Error
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+
+            error: {
+                message: error.detail,
+                code: error.code
+            }
+        })
+    })
+})
+
+router.delete('/:id/support', (req, res) => {
+    client.query(`SELECT issue_support(${req.userId}, ${req.params.id}, FALSE)`)
+    .then(result => {
+        res.status(200).send({
+            success: true, 
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {}
+        })
+    }).catch(error => {
+        //Error
+        res.status(400).send({
+            success: false,
+            request_id: Math.random().toString(36).substring(3),
+
+            data: {},
+
+            error: {
+                message: error.detail,
+                code: error.code
+            }
+        })
+    })
+})
 
 //Export
 module.exports = router
