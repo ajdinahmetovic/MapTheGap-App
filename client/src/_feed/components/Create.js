@@ -122,7 +122,6 @@ class Create extends React.Component {
                     this.setState({ short_description: e.target.value })
                   }
                   type="textarea"
-                  maxLength={100}
                   cols={20}
                   placeholder={this.context.t("APP.SHORT_DESCRIPTION")}
                 />
@@ -136,7 +135,6 @@ class Create extends React.Component {
                     this.setState({ detailed_description: e.target.value })
                   }
                   type="textarea"
-                  maxLength={100}
                   rows={5}
                   placeholder={this.context.t("APP.DETAIL_DESCRIPTION")}
                 />
@@ -314,7 +312,7 @@ class Create extends React.Component {
                     this.setState({ short_description: e.target.value })
                   }
                   type="textarea"
-                  maxLength={100}
+                  maxLength={9999}
                   cols={20}
                   placeholder={this.context.t("APP.SHORT_DESCRIPTION")}
                 />
@@ -328,7 +326,7 @@ class Create extends React.Component {
                     this.setState({ detailed_description: e.target.value })
                   }
                   type="textarea"
-                  maxLength={100}
+                  maxLength={9999}
                   rows={5}
                   placeholder={this.context.t("APP.DETAIL_DESCRIPTION")}
                 />
@@ -342,7 +340,7 @@ class Create extends React.Component {
                     this.setState({ proposed_solution: e.target.value })
                   }
                   type="textarea"
-                  maxLength={100}
+                  maxLength={9999}
                   rows={5}
                   placeholder={this.context.t("APP.VISION_SOLUTION")}
                 />

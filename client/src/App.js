@@ -20,6 +20,7 @@ class App extends React.Component {
     initializeAxios();
   }
   render() {
+    //localStorage.clear();
     return (
       <Provider store={store}>
         <I18n translations={translations} initialLang={"en"} fallbackLang="en">

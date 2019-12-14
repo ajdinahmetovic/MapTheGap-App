@@ -41,15 +41,6 @@ export class Login extends React.Component {
           <div className="LoginView_mobile">
             <img alt="logo" className="LoginView_mobile__logo" src={logo} />
             <div className="LoginView_mobile__form">
-              <div className="LoginView_mobile__box">
-                <div className="LoginForm__message_mobile">
-                  <p className="LoginForm__message_mobile__txt1">Hello</p>
-                  <h3 className="LoginForm__message_mobile__txt2">
-                    Welcome back
-                  </h3>
-                </div>
-              </div>
-
               <LoginForm />
             </div>
           </div>

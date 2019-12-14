@@ -17,7 +17,9 @@ export const uploadPhotos = photos => async dispatch => {
       dispatch(setActionLoading(ACTIONS.UPLOADING_IMAGE_FALSE));
     })
     .catch(err => {
-      dispatch(setActionSuccess(ACTIONS.UPLOADING_IMAGE_FAIL));
+      dispatch(
+        setActionSuccess("Something went wrong.", ACTIONS.UPLOADING_IMAGE_FAIL)
+      );
       dispatch(setActionLoading(ACTIONS.UPLOADING_IMAGE_FALSE));
     });
 };

@@ -4,7 +4,7 @@ export default class ProblemsAPI {
   static getProblems = () => {
     return axios({
       method: "GET",
-      url: `/feed`
+      url: `/feed?sort_by=date:desc`
     });
   };
 

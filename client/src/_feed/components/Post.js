@@ -127,6 +127,7 @@ class Post extends React.Component {
 
             <div className="Post_mobile__imgContainer">
               <FbImageLibrary
+                countFrom={2}
                 hideOverlay={true}
                 images={this.props.data.images}
               />

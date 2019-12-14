@@ -7,13 +7,16 @@
     display: flex;
     overflow: hidden;
     width: 20%;
-    height: 90vh;
+    height: 91vh;
   }
   &__feed {
+    padding-left: 40px;
+    align-items: center;
     overflow-y: scroll;
     -ms-overflow-style: none;
     width: 60%;
-    height: 90vh;
+    height: 91vh;
+    padding-bottom: 10px;
   }
   &__feed::-webkit-scrollbar {
     width: 0px; /* Remove scrollbar space */

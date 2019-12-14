@@ -1,0 +1,22 @@
+.PDD {
+  background-color: #001988 !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+  &__firstItem {
+    margin: 0;
+    height: 100%;
+  }
+  &__line {
+    width: 80%;
+    height: 1px;
+    margin-top: 10px;
+    margin-left: 10%;
+    background-color: #d1268c;
+    border-radius: 10%;
+  }
+  &__txt {
+    margin: 10px;
+    font-size: 20px;
+    color: white;
+  }
+}

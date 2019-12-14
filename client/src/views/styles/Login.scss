@@ -38,6 +38,7 @@
 }
 
 .LoginView_mobile {
+  overflow: scroll;
   background-color: #001988;
   display: flex;
   flex-direction: column;
@@ -47,7 +48,11 @@
   height: 100vh;
 
   &__box {
+    position: absolute;
     width: 90%;
+    height: 140px;
+    min-height: 140px;
+
     padding-bottom: 40px;
   }
   &__form {

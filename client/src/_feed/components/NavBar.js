@@ -5,33 +5,53 @@ import notificationsIco from "../assets/notifications.svg";
 
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
+import { BrowserView, MobileView } from "react-device-detect";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
+import ProfileDropDown from "./ProfileDropDown";
+import NotificationsDropDown from "./NotificationsDropDown";
 
 class NavBar extends React.Component {
+  toggle = () => {
+    this.setState({ dropDown: !this.state.dropDown });
+  };
   render() {
     return (
-      <div className="NavBar">
-        <div className="NavBar__logoContainer">
-          <img
-            alt="Logo"
-            src={navLogo}
-            className="NavBar__logoContainer__logo"
-          />
-        </div>
-        <div className="NavBar__actionsContainer">
-          <img
-            alt=""
-            //onClick={() => console.log("djes")}
-            src={notificationsIco}
-            className="NavBar__actionsContainer__actions__notification"
-          />
-          <img
-            alt="User avatar"
-            className="NavBar__actionsContainer__actions__avatar"
-            src={
-              "https://api.adorable.io/avatars/400/c792eeb6cb3eff2b58b5e16c5de7344e.png"
-            }
-          />
-        </div>
+      <div>
+        <BrowserView>
+          <div className="NavBar">
+            <div className="NavBar__logoContainer">
+              <img
+                alt="Logo"
+                src={navLogo}
+                className="NavBar__logoContainer__logo"
+              />
+            </div>
+            <div className="NavBar__actionsContainer">
+              <NotificationsDropDown />
+              <ProfileDropDown />
+            </div>
+          </div>
+        </BrowserView>
+        <MobileView>
+          <div className="NavBar_mobile">
+            <div className="NavBar_mobile__logoContainer">
+              <img
+                alt="Logo"
+                src={navLogo}
+                className="NavBar_mobile__logoContainer__logo"
+              />
+            </div>
+            <div className="NavBar_mobile__actionsContainer">
+              <NotificationsDropDown />
+              <ProfileDropDown />
+            </div>
+          </div>
+        </MobileView>
       </div>
     );
   }

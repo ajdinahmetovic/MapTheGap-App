@@ -9,7 +9,7 @@ export const loginUser = user => async dispatch => {
     .then(res => {
       console.log(res.data.data);
       if (res.data.success) {
-        dispatch(setActionSuccess(res.data.data, ACTIONS.LOGIN_SUCCESS));
+        dispatch(setActionSuccess(res.data.data.user, ACTIONS.LOGIN_SUCCESS));
         localStorage.setItem("token", res.data.data.token);
         history.push("/feed");
 
@@ -52,7 +52,8 @@ export const registerUser = user => async dispatch => {
     .then(res => {
       console.log(res.data);
       if (res.data.success) {
-        dispatch(setActionSuccess(res.data.data, ACTIONS.REGISTER_NGO));
+        dispatch(setActionSuccess(res.data.data.user, ACTIONS.REGISTER_NGO));
+        localStorage.setItem("token", res.data.data.token);
         history.push("/feed");
       } else {
         dispatch(setActionError(res.data.error, ACTIONS.REGISTER_NGO_FAIL));
