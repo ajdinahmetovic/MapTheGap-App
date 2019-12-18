@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
 
 const initializeAxios = () => {
   const instance = axios.create();
   instance.defaults.headers.common = {};
-  axios.defaults.baseURL = "http://localhost:8000/";
+  axios.defaults.baseURL = 'http://localhost:8000/';
   axios.interceptors.request.use(
     config => {
-      if (typeof localStorage.getItem("token") === "string") {
+      if (typeof localStorage.getItem('token') === 'string') {
         config.headers.authorization =
-          "Bearer " + localStorage.getItem("token");
+          'Bearer ' + localStorage.getItem('token');
       }
       return config;
     },
@@ -28,7 +28,7 @@ const initializeAxios = () => {
         if (error && error.response && error.response.status === 401) {
           //  401 use refresh tokens
           localStorage.clear();
-          window.location.href = "/";
+          window.location.href = '/';
           return;
           //return axios(error.config);
         }
