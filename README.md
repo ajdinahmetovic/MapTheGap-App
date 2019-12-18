@@ -32,8 +32,8 @@ docker-compose up
 ### 💻 Development & 🤝 Contributing
 
 Want to contribute? Great!
-To contribute to [Web Application](https://github.com/ajdinahmetovic/MapTheGap-App/client) see readme there.
-To contribute to [API](https://github.com/ajdinahmetovic/MapTheGap-App/server) see readme there.
+To contribute to [Web Application](https://github.com/ajdinahmetovic/MapTheGap-App/tree/master/client) see readme there.
+To contribute to [API](https://github.com/ajdinahmetovic/MapTheGap-App/tree/master/server) see readme there.
 
 Issues and feature requests are welcome!
 Feel free to check [issues page](https://github.com/ajdinahmetovic/MapTheGap-App/issues).
