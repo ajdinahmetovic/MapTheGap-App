@@ -1,9 +1,9 @@
-import React from "react";
-import "../styles/Create.scss";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import ngoIco from "../assets/ngo.svg";
-import upWote from "../assets/upwote.svg";
+import React from 'react';
+import '../styles/Create.scss';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import ngoIco from '../assets/ngo.svg';
+import upWote from '../assets/upwote.svg';
 import {
   Input,
   InputGroup,
@@ -14,13 +14,14 @@ import {
   FormGroup,
   Row,
   Spinner
-} from "reactstrap";
+} from 'reactstrap';
 
-import youthIco from "../assets/youth.svg";
-import { Button } from "../../common/components/Button";
-import { createPost } from "../../actions/post_actions";
-import ImageUploader from "../../common/components/ImageUploader";
-import { isBrowser, isMobile } from "react-device-detect";
+import youthIco from '../assets/youth.svg';
+import { Button } from '../../common/components/Button';
+import { createPost } from '../../actions/post_actions';
+import ImageUploader from '../../common/components/ImageUploader';
+import { isBrowser, isMobile } from 'react-device-detect';
+import { getCategories } from '../../actions/categories_actions';
 
 class Create extends React.Component {
   state = {
@@ -32,6 +33,10 @@ class Create extends React.Component {
     }
   };
   //https://music.youtube.com/watch?v=sQKNaVKzjSI&list=RDMMDbBbnHI7JdU
+
+  componentWillMount() {
+    this.props.getCategories();
+  }
   componentWillReceiveProps(nextProps) {
     console.log(nextProps);
     this.setState({ images: nextProps.images });
@@ -58,7 +63,7 @@ class Create extends React.Component {
               src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
             />
             <p className="Create__container__txt">
-              {this.context.t("APP.WHAT_IS_PROBLEM")}
+              {this.context.t('APP.WHAT_IS_PROBLEM')}
             </p>
           </div>
           <div className="Create__line"></div>
@@ -78,7 +83,7 @@ class Create extends React.Component {
               src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
             />
             <p className="Create_mobile__container__txt">
-              {this.context.t("APP.WHAT_IS_PROBLEM")}
+              {this.context.t('APP.WHAT_IS_PROBLEM')}
             </p>
           </div>
           <div className="Create_mobile__line"></div>
@@ -98,24 +103,24 @@ class Create extends React.Component {
               src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
             />
             <p className="Create__container__txt">
-              {this.context.t("APP.TELL_US_MORE")}
+              {this.context.t('APP.TELL_US_MORE')}
             </p>
           </div>
           <div className="Create__formContainer">
             <Form className="Create__form">
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.PROBLEM_TITLE")}
+                  {this.context.t('APP.PROBLEM_TITLE')}
                 </Label>
                 <Input
                   onChange={e => this.setState({ title: e.target.value })}
                   type="email"
-                  placeholder={this.context.t("APP.PROBLEM_TITLE")}
+                  placeholder={this.context.t('APP.PROBLEM_TITLE')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.SHORT_DESCRIPTION")}
+                  {this.context.t('APP.SHORT_DESCRIPTION')}
                 </Label>
                 <Input
                   onChange={e =>
@@ -123,12 +128,12 @@ class Create extends React.Component {
                   }
                   type="textarea"
                   cols={20}
-                  placeholder={this.context.t("APP.SHORT_DESCRIPTION")}
+                  placeholder={this.context.t('APP.SHORT_DESCRIPTION')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.DETAIL_DESCRIPTION")}
+                  {this.context.t('APP.DETAIL_DESCRIPTION')}
                 </Label>
                 <Input
                   onChange={e =>
@@ -136,12 +141,12 @@ class Create extends React.Component {
                   }
                   type="textarea"
                   rows={5}
-                  placeholder={this.context.t("APP.DETAIL_DESCRIPTION")}
+                  placeholder={this.context.t('APP.DETAIL_DESCRIPTION')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.VISION_SOLUTION")}
+                  {this.context.t('APP.VISION_SOLUTION')}
                 </Label>
                 <Input
                   onChange={e =>
@@ -150,7 +155,7 @@ class Create extends React.Component {
                   type="textarea"
                   maxLength={100}
                   rows={5}
-                  placeholder={this.context.t("APP.VISION_SOLUTION")}
+                  placeholder={this.context.t('APP.VISION_SOLUTION')}
                 />
               </FormGroup>
               <Container>
@@ -163,18 +168,13 @@ class Create extends React.Component {
                         }
                         className="NGO__Form__label"
                       >
-                        {this.context.t("APP.PROBLEM_FIELD")}
+                        {this.context.t('APP.PROBLEM_FIELD')}
                       </Label>
-                      <Input type="select">
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </Input>
+                      <Input type="select">{this.renderCategories()}</Input>
                     </FormGroup>
                     <FormGroup>
                       <Label className="NGO__Form__label">
-                        {this.context.t("APP.PROBLEM_PICTURE")}
+                        {this.context.t('APP.PROBLEM_PICTURE')}
                       </Label>
                       <ImageUploader />
                     </FormGroup>
@@ -187,7 +187,7 @@ class Create extends React.Component {
                         }
                         className="NGO__Form__label"
                       >
-                        {this.context.t("APP.PROBLEM_DELEGATE_TO")}
+                        {this.context.t('APP.PROBLEM_DELEGATE_TO')}
                       </Label>
                       <Label className="NGO__checkLabel2">
                         <Input
@@ -201,7 +201,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
 
@@ -217,7 +217,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
 
@@ -233,7 +233,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
                     </FormGroup>
@@ -250,7 +250,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
                     </FormGroup>
@@ -261,16 +261,16 @@ class Create extends React.Component {
             <div className="Create__actionContainer">
               <Button
                 onClick={() => this.setState({ isPosting: false })}
-                text={this.context.t("APP.CANCEL")}
-                type={"DismissBtn"}
+                text={this.context.t('APP.CANCEL')}
+                type={'DismissBtn'}
               />
               {this.props.isLoading ? (
                 <Spinner color="#001988" />
               ) : (
                 <Button
                   onClick={() => this.props.createPost(this.state)}
-                  text={this.context.t("APP.POST")}
-                  type={"PostBtn"}
+                  text={this.context.t('APP.POST')}
+                  type={'PostBtn'}
                 />
               )}
             </div>
@@ -288,24 +288,24 @@ class Create extends React.Component {
               src="https://api.adorable.io/avatars/400/42621c0aeeefffbef5421b9e7a02b389.png"
             />
             <p className="Create_mobile__container__txt">
-              {this.context.t("APP.TELL_US_MORE")}
+              {this.context.t('APP.TELL_US_MORE')}
             </p>
           </div>
           <div className="Create_mobile__formContainer">
             <Form className="Create_mobile__form">
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.PROBLEM_TITLE")}
+                  {this.context.t('APP.PROBLEM_TITLE')}
                 </Label>
                 <Input
                   onChange={e => this.setState({ title: e.target.value })}
                   type="email"
-                  placeholder={this.context.t("APP.PROBLEM_TITLE")}
+                  placeholder={this.context.t('APP.PROBLEM_TITLE')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.SHORT_DESCRIPTION")}
+                  {this.context.t('APP.SHORT_DESCRIPTION')}
                 </Label>
                 <Input
                   onChange={e =>
@@ -314,12 +314,12 @@ class Create extends React.Component {
                   type="textarea"
                   maxLength={9999}
                   cols={20}
-                  placeholder={this.context.t("APP.SHORT_DESCRIPTION")}
+                  placeholder={this.context.t('APP.SHORT_DESCRIPTION')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.DETAIL_DESCRIPTION")}
+                  {this.context.t('APP.DETAIL_DESCRIPTION')}
                 </Label>
                 <Input
                   onChange={e =>
@@ -328,12 +328,12 @@ class Create extends React.Component {
                   type="textarea"
                   maxLength={9999}
                   rows={5}
-                  placeholder={this.context.t("APP.DETAIL_DESCRIPTION")}
+                  placeholder={this.context.t('APP.DETAIL_DESCRIPTION')}
                 />
               </FormGroup>
               <FormGroup>
                 <Label className="NGO__Form__label">
-                  {this.context.t("APP.VISION_SOLUTION")}
+                  {this.context.t('APP.VISION_SOLUTION')}
                 </Label>
                 <Input
                   onChange={e =>
@@ -342,7 +342,7 @@ class Create extends React.Component {
                   type="textarea"
                   maxLength={9999}
                   rows={5}
-                  placeholder={this.context.t("APP.VISION_SOLUTION")}
+                  placeholder={this.context.t('APP.VISION_SOLUTION')}
                 />
               </FormGroup>
               <Container>
@@ -355,18 +355,13 @@ class Create extends React.Component {
                         }
                         className="NGO__Form__label"
                       >
-                        {this.context.t("APP.PROBLEM_FIELD")}
+                        {this.context.t('APP.PROBLEM_FIELD')}
                       </Label>
-                      <Input type="select">
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </Input>
+                      <Input type="select">{this.renderCategories()}</Input>
                     </FormGroup>
                     <FormGroup>
                       <Label className="NGO__Form__label">
-                        {this.context.t("APP.PROBLEM_PICTURE")}
+                        {this.context.t('APP.PROBLEM_PICTURE')}
                       </Label>
                       <ImageUploader />
                     </FormGroup>
@@ -377,7 +372,7 @@ class Create extends React.Component {
                         }
                         className="NGO__Form__label"
                       >
-                        {this.context.t("APP.PROBLEM_DELEGATE_TO")}
+                        {this.context.t('APP.PROBLEM_DELEGATE_TO')}
                       </Label>
                       <Label className="NGO__checkLabel2">
                         <Input
@@ -389,9 +384,9 @@ class Create extends React.Component {
                             })
                           }
                           type="checkbox"
-                        />{" "}
+                        />{' '}
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
 
@@ -407,7 +402,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
 
@@ -423,7 +418,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
                     </FormGroup>
@@ -440,7 +435,7 @@ class Create extends React.Component {
                           type="checkbox"
                         />
                         <p className="NGO__checkTxt">
-                          {this.context.t("APP.PROBLEM_PARTICIPATE")}{" "}
+                          {this.context.t('APP.PROBLEM_PARTICIPATE')}{' '}
                         </p>
                       </Label>
                     </FormGroup>
@@ -451,16 +446,16 @@ class Create extends React.Component {
             <div className="Create_mobile__actionContainer">
               <Button
                 onClick={() => this.setState({ isPosting: false })}
-                text={this.context.t("APP.CANCEL")}
-                type={"DismissBtn"}
+                text={this.context.t('APP.CANCEL')}
+                type={'DismissBtn'}
               />
               {this.props.isLoading ? (
                 <Spinner color="#001988" />
               ) : (
                 <Button
                   onClick={() => this.props.createPost(this.state)}
-                  text={this.context.t("APP.POST")}
-                  type={"PostBtn"}
+                  text={this.context.t('APP.POST')}
+                  type={'PostBtn'}
                 />
               )}
             </div>
@@ -469,17 +464,29 @@ class Create extends React.Component {
       );
     }
   };
+
+  renderCategories = () => {
+    return this.props.categories.map(category => {
+      return (
+        <option key={category.id} id={category.id}>
+          {category.name}
+        </option>
+      );
+    });
+  };
 }
 Create.contextTypes = {
   t: PropTypes.func
 };
 
 const mapStateToProps = state => ({
+  categories: state.categoriesReducer.categories,
   images: state.imageUploadReducer.images,
   isLoading: state.postReducer.isPostLoading,
   err: state.authReducer.errMsgPosting
 });
 const mapDispatchToProps = {
-  createPost: post => createPost(post)
+  createPost: post => createPost(post),
+  getCategories: () => getCategories()
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

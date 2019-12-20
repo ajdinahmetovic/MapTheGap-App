@@ -1,19 +1,20 @@
-import React from "react";
-import "../styles/NavBar.scss";
-import navLogo from "../assets/navlogo.svg";
-import notificationsIco from "../assets/notifications.svg";
+import React from 'react';
+import '../styles/NavBar.scss';
+import navLogo from '../assets/navlogo.svg';
+import notificationsIco from '../assets/notifications.svg';
 
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { BrowserView, MobileView } from "react-device-detect";
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { BrowserView, MobileView } from 'react-device-detect';
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
-} from "reactstrap";
-import ProfileDropDown from "./ProfileDropDown";
-import NotificationsDropDown from "./NotificationsDropDown";
+} from 'reactstrap';
+import ProfileDropDown from './ProfileDropDown';
+import NotificationsDropDown from './NotificationsDropDown';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
   toggle = () => {
@@ -25,11 +26,13 @@ class NavBar extends React.Component {
         <BrowserView>
           <div className="NavBar">
             <div className="NavBar__logoContainer">
-              <img
-                alt="Logo"
-                src={navLogo}
-                className="NavBar__logoContainer__logo"
-              />
+              <Link to="/feed">
+                <img
+                  alt="Logo"
+                  src={navLogo}
+                  className="NavBar__logoContainer__logo"
+                />
+              </Link>
             </div>
             <div className="NavBar__actionsContainer">
               <NotificationsDropDown />

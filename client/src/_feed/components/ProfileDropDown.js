@@ -1,18 +1,24 @@
-import React from "react";
+import React from 'react';
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
-} from "reactstrap";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import "../styles/ProfileDropDown.scss";
+} from 'reactstrap';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import '../styles/ProfileDropDown.scss';
+import { Link } from 'react-router-dom';
 
 class ProfileDropDown extends React.Component {
   state = {
     dropDown: false
   };
+  logOut() {
+    console.log('DJES');
+    localStorage.clear();
+    window.location.href = '/';
+  }
   render() {
     //localStorage.clear();
     return (
@@ -38,21 +44,25 @@ class ProfileDropDown extends React.Component {
               alt="User avatar"
               className="NavBar__actionsContainer__actions__avatar"
               src={
-                "https://api.adorable.io/avatars/400/c792eeb6cb3eff2b58b5e16c5de7344e.png"
+                'https://api.adorable.io/avatars/400/c792eeb6cb3eff2b58b5e16c5de7344e.png'
               }
             />
           </span>
         </DropdownToggle>
         <DropdownMenu right className="PDD">
-          <div className="PDD__firstItem">
-            <p className="PDD__txt">Profile</p>
-          </div>
+          <Link to="/profile">
+            <div className="PDD__firstItem">
+              <p className="PDD__txt">Profile</p>
+            </div>
+          </Link>
+          <Link to="/profile">
+            <div className="PDD__line" />
+            <div className="PDD__firstItem">
+              <p className="PDD__txt">Awards</p>
+            </div>
+          </Link>
           <div className="PDD__line" />
-          <div className="PDD__firstItem">
-            <p className="PDD__txt">Awards</p>
-          </div>
-          <div className="PDD__line" />
-          <div className="PDD__firstItem">
+          <div onClick={() => this.logOut()} className="PDD__firstItem">
             <p className="PDD__txt">Log out</p>
           </div>
         </DropdownMenu>

@@ -1,4 +1,4 @@
-import { ACTIONS } from "../constants/action_types";
+import { ACTIONS } from '../constants/action_types';
 
 const initialState = {
   problems: [],
@@ -19,13 +19,14 @@ export default function(state = initialState, action) {
     case ACTIONS.FETCHING_PROBLEMS_ERROR:
       return { ...state, errMsg: action.payload };
     //POST ACTIONS
+    case ACTIONS.CREATING_PROBLEMS_SUCCESS:
+      console.log('AJDIN');
+      return { ...state, problems: [action.payload, ...state.problems] };
     case ACTIONS.CREATING_PROBLEMS_TRUE:
       return { ...state, isPostLoading: true };
     case ACTIONS.CREATING_PROBLEMS_FALSE:
       return { ...state, isPostLoading: false };
-    case ACTIONS.FETCHING_PROBLEMS_SUCCESS:
-      return { ...state, problems: [action.payload, state.problems] };
-    case ACTIONS.FETCHING_PROBLEMS_ERROR:
+    case ACTIONS.CREATING_PROBLEMS_ERROR:
       return { ...state, errMsg: action.payload };
     default:
       return state;
