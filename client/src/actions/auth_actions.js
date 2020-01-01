@@ -1,7 +1,7 @@
-import { ACTIONS } from "../constants/action_types";
-import AuthAPI from "../api/auth";
-import { setActionSuccess, setActionError, setActionLoading } from "./common";
-import history from "../history";
+import { ACTIONS } from '../constants/action_types';
+import AuthAPI from '../api/auth';
+import { setActionSuccess, setActionError, setActionLoading } from './common';
+import history from '../history';
 
 export const loginUser = user => async dispatch => {
   dispatch(setActionLoading(ACTIONS.LOGIN_LOADING_TRUE));
@@ -10,12 +10,12 @@ export const loginUser = user => async dispatch => {
       console.log(res.data.data);
       if (res.data.success) {
         dispatch(setActionSuccess(res.data.data.user, ACTIONS.LOGIN_SUCCESS));
-        localStorage.setItem("token", res.data.data.token);
-        history.push("/feed");
+        localStorage.setItem('token', res.data.data.token);
+        history.push('/feed');
 
         dispatch(setActionLoading(ACTIONS.LOGIN_LOADING_FALSE));
       } else {
-        dispatch(setActionError("Something went wrong", ACTIONS.LOGIN_FAIL));
+        dispatch(setActionError('Something went wrong', ACTIONS.LOGIN_FAIL));
       }
     })
     .catch(err => {
@@ -29,7 +29,7 @@ export const loginUser = user => async dispatch => {
         }
         */
         if (err.response.data.error.message === undefined) {
-          dispatch(setActionError("Generic error", ACTIONS.LOGIN_FAIL));
+          dispatch(setActionError('Generic error', ACTIONS.LOGIN_FAIL));
         } else {
           dispatch(
             setActionError(err.response.data.error.message, ACTIONS.LOGIN_FAIL)
@@ -43,9 +43,9 @@ export const loginUser = user => async dispatch => {
 
 export const registerUser = user => async dispatch => {
   dispatch(setActionLoading(ACTIONS.LOADING_TRUE));
-  user.address += " " + user.city + " " + user.country;
-  let city = "city";
-  let country = "country";
+  user.address += ' ' + user.city + ' ' + user.country;
+  let city = 'city';
+  let country = 'country';
   delete user[city];
   delete user[country];
   AuthAPI.registerUser(user)
@@ -53,8 +53,8 @@ export const registerUser = user => async dispatch => {
       console.log(res.data);
       if (res.data.success) {
         dispatch(setActionSuccess(res.data.data.user, ACTIONS.REGISTER_NGO));
-        localStorage.setItem("token", res.data.data.token);
-        history.push("/feed");
+        localStorage.setItem('token', res.data.data.token);
+        history.push('/feed');
       } else {
         dispatch(setActionError(res.data.error, ACTIONS.REGISTER_NGO_FAIL));
       }
@@ -64,7 +64,7 @@ export const registerUser = user => async dispatch => {
       console.log(err.response.data);
       dispatch(
         setActionError(
-          "Something went wrong, please try again later",
+          'Something went wrong, please try again later',
           ACTIONS.REGISTER_NGO_FAIL
         )
       );
