@@ -6,7 +6,7 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "lottie-web": "^5.5.9",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "nvm": "0.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
